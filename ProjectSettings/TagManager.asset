@@ -29,14 +29,14 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - P1Cam
+  - P2Cam
+  - P3Cam
+  - P4Cam
+  - P5Cam
+  - P6Cam
+  - P7Cam
+  - P8Cam
   m_SortingLayers:
   - name: Default
     uniqueID: 0

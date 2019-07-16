@@ -5,6 +5,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/[Aa]ssets/Private/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
