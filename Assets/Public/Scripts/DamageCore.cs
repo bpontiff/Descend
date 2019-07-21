@@ -5,5 +5,6 @@ using UnityEngine;
 public class DamageCore : MonoBehaviour
 {
     public float damage;
-    public float knockback;
+    public float knockbackStrength;
+    public GameObject knockbackSource;
 }

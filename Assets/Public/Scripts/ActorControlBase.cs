@@ -47,5 +47,7 @@ public class ActorControlBase : MonoBehaviour
     protected void OnPrimaryPressed()
     {
         GameObject bullet = (GameObject)Instantiate(projectilePrefab, transform.position + transform.right, transform.rotation);
+        //Set the knockback source to be the player
+        bullet.GetComponent<ProjectileMovementBase>().knockbackSource = this.gameObject;
     }
 }
