@@ -5,18 +5,26 @@ using UnityEngine;
 public class DestroyOnCollision : MonoBehaviour
 {
     private Rigidbody2D m_Body;
+    private DamageCore m_damangeCore;
 
     // Start is called before the first frame update
     void Start()
     {
         m_Body = GetComponent<Rigidbody2D>();
+        m_damangeCore = GetComponent<DamageCore>();
     }
 
 
     // called when the cube hits the floor
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(col.gameObject.tag);
+        if (col.tag == "MainCamera")
+            return;
+        Debug.Log("Collided with: " + col.gameObject.name);
+
+        if(m_damangeCore != null)
+            m_damangeCore.ApplyKnockback(col.gameObject);
+
         Destroy(this.gameObject);
     }
 }

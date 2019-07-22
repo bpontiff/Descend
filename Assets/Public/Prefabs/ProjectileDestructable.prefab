@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  knockbackStrength: 0
+  knockbackStrength: 5000
   knockbackSource: {fileID: 4382660872892278542}
   movementSpeed: 3
 --- !u!114 &-5118014197282168976
