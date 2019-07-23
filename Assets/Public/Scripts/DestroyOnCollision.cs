@@ -14,16 +14,11 @@ public class DestroyOnCollision : MonoBehaviour
         m_damangeCore = GetComponent<DamageCore>();
     }
 
-
-    // called when the cube hits the floor
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.tag == "MainCamera")
             return;
         Debug.Log("Collided with: " + col.gameObject.name);
-
-        if(m_damangeCore != null)
-            m_damangeCore.ApplyKnockback(col.gameObject);
 
         Destroy(this.gameObject);
     }
