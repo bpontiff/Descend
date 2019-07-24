@@ -16,7 +16,7 @@ public class DestroyOnCollision : MonoBehaviour
     // called when the cube hits the floor
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Enterted Trigger");
+        Debug.Log("Entered Trigger");
         Debug.Log(col.gameObject.tag);
         //Destroy(this.gameObject);
     }
