@@ -18,6 +18,6 @@ public class DestroyOnCollision : MonoBehaviour
     {
         Debug.Log("Entered Trigger");
         Debug.Log(col.gameObject.tag);
-        //Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
 }

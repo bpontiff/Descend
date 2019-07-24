@@ -15,7 +15,6 @@ public class Projectile : DamageCore
     {
         m_Body = GetComponent<Rigidbody2D>();
         m_MovementDirection = new Vector3(1,0,0);
-        damage = 1;
     }
 
     // Update is called once per frame
@@ -37,8 +36,6 @@ public class Projectile : DamageCore
                 actor.health -= damage;
             }
         }
-
-        Destroy(this.gameObject);
 
     }
 }
