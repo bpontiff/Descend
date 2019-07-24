@@ -10,11 +10,14 @@ public class ActorMovementModel : MonoBehaviour
     private Boolean m_SpeedOverridden = false;
     private float m_OverrideSpeed = 3.0f;
 
+
     public float movementSpeed = 3.0f;
     private int m_LastSetDirectionFrameCount;
 
     private Actor m_Actor;
     private Rigidbody2D m_Body;
+
+    public Animator m_Animations;
 
     Vector2 m_ActiveDirection;
 
@@ -22,6 +25,7 @@ public class ActorMovementModel : MonoBehaviour
     {
         m_Body = GetComponent<Rigidbody2D>();
         m_Actor = GetComponent<Actor>();
+        m_Animations = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -65,6 +69,23 @@ public class ActorMovementModel : MonoBehaviour
 
             m_FacingDirection = facingDirection;
             m_LastSetDirectionFrameCount = Time.frameCount;
+
+            if(m_FacingDirection.y == -1)
+            {
+                m_Animations.Play("MoveDown");
+            }
+            else if (m_FacingDirection.y == 1)
+            {
+                m_Animations.Play("MoveUp");
+            }
+            else if (m_FacingDirection.x == -1)
+            {
+                m_Animations.Play("MoveLeft");
+            }
+            else if (m_FacingDirection.x == 1)
+            {
+                m_Animations.Play("MoveRight");
+            }
         }
     }
 
