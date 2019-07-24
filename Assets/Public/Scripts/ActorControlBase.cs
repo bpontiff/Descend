@@ -4,7 +4,7 @@ using System.Collections;
 public class ActorControlBase : MonoBehaviour
 {
     protected Actor m_Actor;
-    public GameObject projectilePrefab;
+    public Projectile projectile;
 
     void Awake()
     {
@@ -46,6 +46,7 @@ public class ActorControlBase : MonoBehaviour
 
     protected void OnPrimaryPressed()
     {
-        GameObject bullet = (GameObject)Instantiate(projectilePrefab, transform.position + transform.right, transform.rotation);
+        Projectile bullet = (Projectile)Instantiate(projectile, transform.position + transform.right, transform.rotation);
+        bullet.Source = m_Actor;
     }
 }
