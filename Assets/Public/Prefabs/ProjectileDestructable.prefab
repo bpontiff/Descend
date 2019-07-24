@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4382660872892278543}
   - component: {fileID: -7797209789175104733}
   - component: {fileID: 6409012556519962989}
-  - component: {fileID: -5118014197282168976}
+  - component: {fileID: 6768427809047643078}
   m_Layer: 0
   m_Name: ProjectileDestructable
   m_TagString: Untagged
@@ -171,14 +171,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4382660872892278542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a013c5d7a6bf1448993969054efcafc, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b92f0754186f214db716b5be8412768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   damage: 0
   knockbackStrength: 5000
   knockbackSource: {fileID: 4382660872892278542}
+=======
+  damage: 1
+  knockback: 0
+>>>>>>> f130823fb747134033ec7e8d67fa3b3f0856a4e8
   movementSpeed: 3
---- !u!114 &-5118014197282168976
+--- !u!114 &6768427809047643078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -4,7 +4,7 @@ using System.Collections;
 public class ActorControlBase : MonoBehaviour
 {
     protected Actor m_Actor;
-    public GameObject projectilePrefab;
+    public Projectile projectile;
 
     void Awake()
     {
@@ -46,8 +46,8 @@ public class ActorControlBase : MonoBehaviour
 
     protected void OnPrimaryPressed()
     {
-        GameObject bullet = (GameObject)Instantiate(projectilePrefab, transform.position + transform.right, transform.rotation);
         //Set the knockback source to be the player
-        bullet.GetComponent<ProjectileMovementBase>().knockbackSource = this.gameObject;
+        Projectile bullet = (Projectile)Instantiate(projectile, transform.position + transform.right, transform.rotation);
+        bullet.knockbackSource = m_Actor.gameObject;
     }
 }
