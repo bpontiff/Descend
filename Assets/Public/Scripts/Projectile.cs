@@ -25,15 +25,13 @@ public class Projectile : DamageCore
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Entered Trigger");
-        Debug.Log(col.gameObject.tag);
-
         if ("Player".Equals(col.gameObject.tag) || "Enemy".Equals(col.gameObject.tag))
         {
             if ((Source is Player && "Enemy".Equals(col.gameObject.tag)) || (Source is Enemy && "Player".Equals(col.gameObject.tag)))
             {
                 Actor actor = col.gameObject.GetComponent<Actor>();
                 actor.health -= damage;
+                ApplyKnockback(col.gameObject);
             }
         }
 

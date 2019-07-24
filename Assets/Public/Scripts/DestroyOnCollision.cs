@@ -18,8 +18,6 @@ public class DestroyOnCollision : MonoBehaviour
     {
         if (col.tag == "MainCamera")
             return;
-        Debug.Log("Entered Trigger");
-        Debug.Log(col.gameObject.tag);
         Destroy(this.gameObject);
     }
 }

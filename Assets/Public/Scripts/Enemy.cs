@@ -7,9 +7,6 @@ namespace Assets.Public.Scripts
     {
         void OnCollisionEnter2D(Collision2D col)
         {
-            Debug.Log("Entered Trigger");
-            Debug.Log(col.gameObject.tag);
-
             if ("Player".Equals(col.gameObject.tag))
             {
                     Player player = col.gameObject.GetComponent<Player>();
