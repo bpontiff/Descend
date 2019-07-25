@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using Assets.Public.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageCore : MonoBehaviour
 {
+    public Actor Source { get; set; }
     public int damage;
     public float knockbackStrength;
     public GameObject knockbackSource;
@@ -49,11 +51,22 @@ public class DamageCore : MonoBehaviour
         target.gameObject.GetComponent<Rigidbody2D>().AddForce(directionalVector * knockbackStrength);
     }
 
-    
+
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.tag == "MainCamera")
             return;
-        ApplyKnockback(col.gameObject);
+        Debug.Log("Entered");
+        if ("Player".Equals(col.gameObject.tag) || "Enemy".Equals(col.gameObject.tag))
+        {
+            Debug.Log(Source + "  " + col.gameObject.tag);
+            if ((Source is Player && "Enemy".Equals(col.gameObject.tag)) || (Source is Enemy && "Player".Equals(col.gameObject.tag)))
+            {
+                Actor actor = col.gameObject.GetComponent<Actor>();
+                actor.health -= damage;
+                ApplyKnockback(col.gameObject);
+            }
+        }
     }
 }

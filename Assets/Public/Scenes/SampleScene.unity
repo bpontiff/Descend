@@ -21455,7 +21455,7 @@ GameObject:
   - component: {fileID: 703026129}
   m_Layer: 0
   m_Name: Actor
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21513,7 +21513,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 703026122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e91e8e32143a4c49bf93e138b9471f3, type: 3}
+  m_Script: {fileID: 11500000, guid: b9168a09aea102e418f2648eaf677246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Movement: {fileID: 703026125}
@@ -27076,7 +27076,7 @@ GameObject:
   - component: {fileID: 1431048128}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27216,7 +27216,7 @@ GameObject:
   - component: {fileID: 1495074791}
   m_Layer: 0
   m_Name: Actor2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27249,7 +27249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d62b1afa6a9014f935f12b828a715e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 7430292118400835605, guid: 1396e4c229af812438e35bd5a2856e08, type: 3}
+  weapon: {fileID: 3366680307525841298, guid: 271babdec93aa0548bc31567a167f9f5, type: 3}
   playerId: 1
 --- !u!61 &1495074787
 BoxCollider2D:
@@ -27300,7 +27300,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1495074784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e91e8e32143a4c49bf93e138b9471f3, type: 3}
+  m_Script: {fileID: 11500000, guid: b9168a09aea102e418f2648eaf677246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Movement: {fileID: 1495074788}
