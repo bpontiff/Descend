@@ -20,7 +20,8 @@ public class ActorMovementModel : MonoBehaviour
     public Animator m_Animations;
 
     Vector2 m_ActiveDirection;
-
+    
+    
     void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
@@ -119,5 +120,10 @@ public class ActorMovementModel : MonoBehaviour
             return;
         }
         m_ActiveDirection = direction;
+    }
+
+    public Vector2 GetFacingDirection ()
+    {
+        return m_FacingDirection;
     }
 }

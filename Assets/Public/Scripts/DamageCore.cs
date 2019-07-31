@@ -57,10 +57,8 @@ public class DamageCore : MonoBehaviour
     {
         if (col.tag == "MainCamera")
             return;
-        Debug.Log("Entered");
         if ("Player".Equals(col.gameObject.tag) || "Enemy".Equals(col.gameObject.tag))
         {
-            Debug.Log(Source + "  " + col.gameObject.tag);
             if ((Source is Player && "Enemy".Equals(col.gameObject.tag)) || (Source is Enemy && "Player".Equals(col.gameObject.tag)))
             {
                 Actor actor = col.gameObject.GetComponent<Actor>();
