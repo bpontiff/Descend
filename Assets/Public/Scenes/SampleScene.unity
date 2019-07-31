@@ -28622,7 +28622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d62b1afa6a9014f935f12b828a715e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 7430292118400835605, guid: 1396e4c229af812438e35bd5a2856e08, type: 3}
+  weapon: {fileID: 3366680307525841298, guid: 271babdec93aa0548bc31567a167f9f5, type: 3}
   playerId: 1
 --- !u!61 &1495074787
 BoxCollider2D:

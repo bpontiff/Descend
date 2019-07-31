@@ -128,8 +128,9 @@ MonoBehaviour:
   damage: 2
   knockbackStrength: 500
   knockbackSource: {fileID: 0}
-  startAngle: 0
-  swingAngle: 0
+  startAngle: 270
+  swingAngle: 130
+  swingSpeed: 75
   RotationAxis: {x: 0, y: 0, z: 0}
 --- !u!61 &3150110429470750467
 BoxCollider2D:
