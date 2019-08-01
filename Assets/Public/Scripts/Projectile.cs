@@ -7,17 +7,21 @@ public class Projectile : DamageCore
     private Rigidbody2D m_Body;
 
     public float movementSpeed = 3.0f;
-    private Vector3 m_MovementDirection;
+    private Vector3 m_MovementDirection = new Vector3(0,0,0);
 
     void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
-        m_MovementDirection = new Vector3(1,0,0);
     }
 
     // Update is called once per frame
     void Update()
     {
         m_Body.velocity = m_MovementDirection * movementSpeed;
+    }
+
+    public void setMovementDirection(Vector3 dir)
+    {
+        m_MovementDirection = dir;
     }
 }

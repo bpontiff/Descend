@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Assets.Public.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyOnCollision : MonoBehaviour
+public class ProjectileDestroyOnCollision : MonoBehaviour
 {
     private Rigidbody2D m_Body;
     private DamageCore m_damangeCore;
@@ -18,6 +19,10 @@ public class DestroyOnCollision : MonoBehaviour
     {
         if (col.tag == "MainCamera")
             return;
-        Destroy(this.gameObject);
+        Actor Source = this.GetComponent<DamageCore>().Source;
+        if ((Source is Player && !("Player".Equals(col.gameObject.tag))) || (Source is Enemy && "Enemy".Equals(col.gameObject.tag)))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

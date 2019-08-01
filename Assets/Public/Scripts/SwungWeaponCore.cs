@@ -26,25 +26,7 @@ public class SwungWeaponCore : WeaponCore
 
     public override void PrimaryAction(Actor m_Actor)
     {
-        
-        Vector2 swingDir = m_Actor.GetComponent<ActorMovementModel>().GetFacingDirection();
-        float modifiedAngle = startAngle;
-        if(swingDir.x == 0f && swingDir.y == 1f)
-        {
-            modifiedAngle = startAngle;
-        }
-        else if (swingDir.x == -1f && swingDir.y == 0f)
-        {
-            modifiedAngle = startAngle +90;
-        }
-        else if (swingDir.x == 0f && swingDir.y == -1f)
-        {
-            modifiedAngle = startAngle+180;
-        }
-        else if (swingDir.x == 1f && swingDir.y == 0f)
-        {
-            modifiedAngle = startAngle + 270;
-        }
+        float modifiedAngle = modifiedAngleCalc(startAngle, m_Actor) - 90;
         float myAngleInRads = (modifiedAngle * Mathf.PI) / 180;
         Vector3 startPos = new Vector3(Mathf.Cos(myAngleInRads), Mathf.Sin(myAngleInRads), 0);
         SwungWeaponCore weapon = (SwungWeaponCore)Instantiate(this, m_Actor.transform.position + startPos, Quaternion.Euler(Vector3.forward * (-90 + modifiedAngle)));
