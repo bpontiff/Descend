@@ -27,7 +27,6 @@ public class DamageCore : MonoBehaviour
             return;
         //Get position of target
         Vector2 targetPosition = target.transform.position;
-        Debug.Log(targetPosition);
 
         //Get the direction vector of the target relative to the source of the knockback
         Vector2 directionalVector = targetPosition - sourceVector;

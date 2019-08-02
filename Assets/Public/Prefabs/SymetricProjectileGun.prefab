@@ -49,6 +49,6 @@ MonoBehaviour:
   projectile: {fileID: 7504460058591011067, guid: 3c43fd33057c21742979750c049f1755,
     type: 3}
   projectileSpeed: 3
-  startAngle: 180
-  projectileCount: 15
-  angleBetweenShots: 10
+  startAngle: 0
+  projectileCount: 5
+  angleBetweenShots: 5
