@@ -6,7 +6,7 @@ public class Projectile : DamageCore
 {
     private Rigidbody2D m_Body;
 
-    public float movementSpeed = 3.0f;
+    public float movementSpeed;
     private Vector3 m_MovementDirection = new Vector3(0,0,0);
 
     void Awake()
