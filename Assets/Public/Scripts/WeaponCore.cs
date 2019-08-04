@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class WeaponCore : DamageCore
 {
     public abstract void PrimaryAction(Actor m_Actor);
-
+    
     protected float modifiedAngleCalc(float startAngle, Actor m_Actor)
     {
         Vector2 swingDir = m_Actor.GetComponent<ActorMovementModel>().GetFacingDirection();
@@ -28,4 +29,8 @@ public abstract class WeaponCore : DamageCore
         }
         return modifiedAngle;
     }
+
+    public abstract void UpdateWeapon(Sprite sprite, float startAngle, float scaleX, float scaleY, float swingAngle, float swingSpeed, int weaponDamage, float knockbackStrength, float distanceFromPlayer);
+
+    public abstract void UpdateDirection(ActorMovementModel.Directions prevDir, ActorMovementModel.Directions currectDirection);
 }

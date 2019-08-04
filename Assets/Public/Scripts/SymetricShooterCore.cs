@@ -32,6 +32,16 @@ public class SymetricShooterCore : WeaponCore
         }
     }
 
+    public override void UpdateDirection(ActorMovementModel.Directions prevDir, ActorMovementModel.Directions currectDirection)
+    {
+        Debug.Log("Gun update Dir not implemented");
+    }
+
+    public override void UpdateWeapon(Sprite sprite, float startAngle, float scaleX, float scaleY, float swingAngle, float swingSpeed, int weaponDamage, float knockbackStrength, float distanceFromPlayer)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void createProjectile(Actor m_Actor, float angle, float speed)
     {
         float myAngleInRads = (angle * Mathf.PI) / 180;

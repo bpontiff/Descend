@@ -4,7 +4,8 @@ using System;
 
 public class ActorMovementModel : MonoBehaviour
 {
-
+    public enum Directions : int { West, North, East, South, COUNT };
+    private Directions currectDirection = Directions.North;
     private Vector3 m_MovementDirection;
     private Vector3 m_FacingDirection;
     private Boolean m_SpeedOverridden = false;
@@ -21,7 +22,7 @@ public class ActorMovementModel : MonoBehaviour
 
     Vector2 m_ActiveDirection;
     
-    
+
     void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
@@ -50,6 +51,7 @@ public class ActorMovementModel : MonoBehaviour
         m_MovementDirection = new Vector3(m_ActiveDirection.x, m_ActiveDirection.y, 0);
         if (m_ActiveDirection != Vector2.zero)
         {
+            Directions prevDir = currectDirection;
             Vector3 facingDirection = m_MovementDirection;
 
             if (facingDirection.x != 0 && facingDirection.y != 0)
@@ -74,19 +76,26 @@ public class ActorMovementModel : MonoBehaviour
             if(m_FacingDirection.y == -1)
             {
                 m_Animations.Play("MoveDown");
+                currectDirection = Directions.South;
             }
             else if (m_FacingDirection.y == 1)
             {
                 m_Animations.Play("MoveUp");
+                currectDirection = Directions.North;
             }
             else if (m_FacingDirection.x == -1)
             {
                 m_Animations.Play("MoveLeft");
+                currectDirection = Directions.East;
             }
             else if (m_FacingDirection.x == 1)
             {
                 m_Animations.Play("MoveRight");
+                currectDirection = Directions.West;
             }
+
+            if(prevDir != currectDirection)
+                this.GetComponent<ActorControlBase>().weapon.UpdateDirection(prevDir, currectDirection);
         }
     }
 
@@ -125,5 +134,10 @@ public class ActorMovementModel : MonoBehaviour
     public Vector2 GetFacingDirection ()
     {
         return m_FacingDirection;
+    }
+
+    public Directions GetDirections ()
+    {
+        return currectDirection;
     }
 }

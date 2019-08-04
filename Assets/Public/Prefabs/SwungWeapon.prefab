@@ -91,8 +91,9 @@ GameObject:
   - component: {fileID: 3366680307525841296}
   - component: {fileID: 3366680307525841298}
   - component: {fileID: 3150110429470750467}
+  - component: {fileID: -8956881490652190184}
   m_Layer: 0
-  m_Name: SawWeapon
+  m_Name: SwungWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,12 +126,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011e4cc907538f3409e7fd2ecb402eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 1
   knockbackStrength: 500
   knockbackSource: {fileID: 0}
-  startAngle: 25
-  swingAngle: 130
+  sprite: {fileID: -4761088342963941427, guid: 80006d20517e13b4c9275b7e58322632, type: 3}
+  scaleX: -0.4
+  scaleY: 0.4
+  startAngle: 0
+  swingAngle: 180
   swingSpeed: 250
+  distanceFromPlayer: 0.6
   RotationAxis: {x: 0, y: 0, z: 1}
 --- !u!61 &3150110429470750467
 BoxCollider2D:
@@ -158,3 +163,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &-8956881490652190184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3366680307525841301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab74414b66b363479b5fcc72ce396ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
