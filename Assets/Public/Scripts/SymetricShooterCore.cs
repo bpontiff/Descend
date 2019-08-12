@@ -7,13 +7,37 @@ public class SymetricShooterCore : WeaponCore
     public Projectile projectile;
     public float projectileSpeed;
     public float startAngle;
+
+    public float secDelayBetweenShots;
+    public float timeTillNextShot = 0;
     [Range(1,500)]
     public int projectileCount;
     [Range(0.1f, 180.0f)]
     public float angleBetweenShots;
 
+
+
+    public void Update()
+    {
+        //if(timeTillNextShot > 0)
+        {
+            timeTillNextShot -= Time.deltaTime;
+        }
+    }
+
+    //Wrapper to check if you can shoot
+    public bool CanShoot()
+    {
+        if (timeTillNextShot <= 0)
+            return true;
+        return false;
+    }
+
     public override void PrimaryAction(Actor m_Actor)
     {
+        if (!CanShoot())
+            return;
+
         float modifiedAngle = modifiedAngleCalc(startAngle, m_Actor);
         int angleMod = 1;
         int angleMultiple = 0;
@@ -30,6 +54,9 @@ public class SymetricShooterCore : WeaponCore
 
             createProjectile(m_Actor, modifiedAngle + angleBetweenShots * angleMultiple * angleMod, projectileSpeed);
         }
+
+        //Set the timer till the shot can be fired
+        timeTillNextShot = secDelayBetweenShots;
     }
 
     public override void UpdateDirection(ActorMovementModel.Directions prevDir, ActorMovementModel.Directions currectDirection)
@@ -46,11 +73,23 @@ public class SymetricShooterCore : WeaponCore
     {
         float myAngleInRads = (angle * Mathf.PI) / 180;
         Vector3 startPos = new Vector3(Mathf.Cos(myAngleInRads), Mathf.Sin(myAngleInRads), 0);
-        Projectile bullet = (Projectile)Instantiate(projectile, m_Actor.transform.position + startPos, Quaternion.Euler(Vector3.forward * (-90 + angle)));
-        bullet.Source = m_Actor;
-        bullet.setMovementDirection(startPos);
-        bullet.knockbackSource = m_Actor.gameObject;
-        bullet.knockbackStrength = this.knockbackStrength;
-        bullet.damage = this.damage;
+
+        GameObject bulletObj = ObjectPooling.SharedInstance.GetPooledObject("ProjectileBase");
+        bulletObj.SetActive(true);
+        Debug.Log(bulletObj);
+        if (bulletObj != null)
+        {
+            Projectile bullet = bulletObj.GetComponent<Projectile>();
+            bullet.Source = m_Actor;
+            bullet.setMovementDirection(startPos);
+            bullet.knockbackSource = m_Actor.gameObject;
+            bullet.knockbackStrength = this.knockbackStrength;
+            bullet.damage = this.damage;
+
+            bullet.transform.position = m_Actor.transform.position + startPos;
+            bullet.transform.rotation = Quaternion.Euler(Vector3.forward * (-90 + angle));
+        }
+
+
     }
 }

@@ -50,5 +50,7 @@ MonoBehaviour:
     type: 3}
   projectileSpeed: 3
   startAngle: 0
+  secDelayBetweenShots: 1
+  timeTillNextShot: 0
   projectileCount: 5
   angleBetweenShots: 5

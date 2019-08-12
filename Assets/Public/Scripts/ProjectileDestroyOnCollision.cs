@@ -16,13 +16,13 @@ public class ProjectileDestroyOnCollision : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.tag == "MainCamera")
+    { 
+        if (col.tag == "MainCamera" || col.tag == "Background" || (this.tag.Equals(col.gameObject.tag)))
             return;
         Actor Source = this.GetComponent<DamageCore>().Source;
-        if ((Source is Player && !("Player".Equals(col.gameObject.tag))) || (Source is Enemy && "Enemy".Equals(col.gameObject.tag)))
+        if ((Source is Player && !("Player".Equals(col.gameObject.tag))) || (Source is Enemy && !("Enemy".Equals(col.gameObject.tag))))
         {
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
