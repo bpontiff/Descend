@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using Assets.Public.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageCore : MonoBehaviour
 {
+    public Actor Source { get; set; }
     public int damage;
     public float knockbackStrength;
     public GameObject knockbackSource;
@@ -25,7 +27,6 @@ public class DamageCore : MonoBehaviour
             return;
         //Get position of target
         Vector2 targetPosition = target.transform.position;
-        Debug.Log(targetPosition);
 
         //Get the direction vector of the target relative to the source of the knockback
         Vector2 directionalVector = targetPosition - sourceVector;
@@ -49,11 +50,20 @@ public class DamageCore : MonoBehaviour
         target.gameObject.GetComponent<Rigidbody2D>().AddForce(directionalVector * knockbackStrength);
     }
 
-    
+
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.tag == "MainCamera")
             return;
-        ApplyKnockback(col.gameObject);
+        if ("Player".Equals(col.gameObject.tag) || "Enemy".Equals(col.gameObject.tag))
+        {
+            if ((Source is Player && "Enemy".Equals(col.gameObject.tag)) || (Source is Enemy && "Player".Equals(col.gameObject.tag)))
+            {
+                Actor actor = col.gameObject.GetComponent<Actor>();
+                actor.health -= damage;
+                ApplyKnockback(col.gameObject);
+            }
+        }
     }
 }
