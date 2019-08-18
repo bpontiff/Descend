@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SymetricShooterCore : WeaponCore
+public class SymetricShooterCore : WeaponHolsterCore
 {
     public Projectile projectile;
     public float projectileSpeed;
     public float startAngle;
 
-    public float secDelayBetweenShots;
-    public float timeTillNextShot = 0;
     [Range(1,500)]
     public int projectileCount;
     [Range(0.1f, 180.0f)]
@@ -38,7 +36,7 @@ public class SymetricShooterCore : WeaponCore
         if (!CanShoot())
             return;
 
-        float modifiedAngle = modifiedAngleCalc(startAngle, m_Actor);
+        float modifiedAngle = WeaponCore.modifiedAngleCalc(startAngle, m_Actor);
         int angleMod = 1;
         int angleMultiple = 0;
         for (int i = 0; i < projectileCount; i++)
@@ -57,11 +55,6 @@ public class SymetricShooterCore : WeaponCore
 
         //Set the timer till the shot can be fired
         timeTillNextShot = secDelayBetweenShots;
-    }
-
-    public override void UpdateDirection(ActorMovementModel.Directions prevDir, ActorMovementModel.Directions currectDirection)
-    {
-        Debug.Log("Gun update Dir not implemented");
     }
 
     public override void UpdateWeapon(Sprite sprite, float startAngle, float scaleX, float scaleY, float swingAngle, float swingSpeed, int weaponDamage, float knockbackStrength, float distanceFromPlayer)
@@ -91,5 +84,10 @@ public class SymetricShooterCore : WeaponCore
         }
 
 
+    }
+
+    public override void UpdateDirection(ActorMovementModel.Directions prevDir, ActorMovementModel.Directions currectDirection)
+    {
+        throw new System.NotImplementedException();
     }
 }

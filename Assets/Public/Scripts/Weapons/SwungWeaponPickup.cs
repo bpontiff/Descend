@@ -24,9 +24,8 @@ public class SwungWeaponPickup : MonoBehaviour
             return;
         else
         {
-            controller.weapon = weaponType;
-            controller.weapon.UpdateWeapon(sprite, startAngle, scaleX, scaleY, swingAngle, swingSpeed, weaponDamage, knockbackStrength, distanceFromPlayer);
-
+            //controller.weaponHolsterPrefab = weaponType;
+            //controller.weaponHolsterPrefab.UpdateWeapon(sprite, startAngle, scaleX, scaleY, swingAngle, swingSpeed, weaponDamage, knockbackStrength, distanceFromPlayer);
             //Destroy(this.gameObject);
         }
             
