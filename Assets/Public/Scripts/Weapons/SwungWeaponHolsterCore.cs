@@ -12,6 +12,7 @@ public class SwungWeaponHolsterCore : WeaponHolsterCore
     public float swingSpeed;
     public float distanceFromPlayer;
     public Vector3 RotationAxis;
+    public SwungWeaponCore weaponPrefab;
 
     private SwungWeaponCore weaponInstance;
 
@@ -23,7 +24,7 @@ public class SwungWeaponHolsterCore : WeaponHolsterCore
         float modifiedAngle = WeaponCore.modifiedAngleCalc(startAngle, m_Actor) - 90;
         float myAngleInRads = (modifiedAngle * Mathf.PI) / 180;
         Vector3 startPos = new Vector3(Mathf.Cos(myAngleInRads) * distanceFromPlayer, Mathf.Sin(myAngleInRads) * distanceFromPlayer, 0);
-        SwungWeaponCore weapon = Instantiate(new SwungWeaponCore(), m_Actor.transform.position + startPos, Quaternion.Euler(Vector3.forward * (-90 + modifiedAngle)));
+        SwungWeaponCore weapon = Instantiate(weaponPrefab, m_Actor.transform.position + startPos, Quaternion.Euler(Vector3.forward * (-90 + modifiedAngle)));
 
         weapon.knockbackSource = m_Actor.gameObject;
         weapon.Source = m_Actor;
@@ -31,6 +32,16 @@ public class SwungWeaponHolsterCore : WeaponHolsterCore
         weapon.GetComponentInChildren<SpriteRenderer>().sprite = sprite;
         weapon.GetComponent<Transform>().localScale = new Vector3(scaleX, scaleY, 1);
         weaponInstance = weapon;
+
+        weaponInstance.sprite = this.sprite;
+        weaponInstance.startAngle = this.startAngle;
+        weaponInstance.scaleX = this.scaleX;
+        weaponInstance.scaleY = this.scaleY;
+        weaponInstance.swingAngle = this.swingAngle;
+        weaponInstance.swingSpeed = this.swingSpeed;
+        weaponInstance.damage = this.damage;
+        weaponInstance.knockbackStrength = this.knockbackStrength;
+        weaponInstance.distanceFromPlayer = this.distanceFromPlayer;
     }
 
     public override void UpdateDirection(ActorMovementModel.Directions prevDir, ActorMovementModel.Directions currectDirection)

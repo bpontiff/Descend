@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SymetricShooterCore : WeaponHolsterCore
+public class SymetricShootingHolsterCore : WeaponHolsterCore
 {
     public Projectile projectile;
     public float projectileSpeed;
@@ -17,7 +17,7 @@ public class SymetricShooterCore : WeaponHolsterCore
 
     public void Update()
     {
-        //if(timeTillNextShot > 0)
+        if(timeTillNextShot > 0)
         {
             timeTillNextShot -= Time.deltaTime;
         }

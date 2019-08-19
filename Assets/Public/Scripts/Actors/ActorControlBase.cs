@@ -6,7 +6,8 @@ public class ActorControlBase : MonoBehaviour
     protected Actor m_Actor;
     public WeaponHolsterCore weaponHolsterPrefab;
 
-    private WeaponHolsterCore holsterInstance;
+    [HideInInspector]
+    public WeaponHolsterCore holsterInstance;
 
     void Awake()
     {

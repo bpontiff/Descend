@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SwungWeaponPickup : MonoBehaviour
 {
-    public SwungWeaponCore weaponType = new SwungWeaponCore();
+    public SwungWeaponHolsterCore weaponType;
 
     public Sprite sprite;
     public float scaleX, scaleY;
@@ -24,8 +24,10 @@ public class SwungWeaponPickup : MonoBehaviour
             return;
         else
         {
-            //controller.weaponHolsterPrefab = weaponType;
-            //controller.weaponHolsterPrefab.UpdateWeapon(sprite, startAngle, scaleX, scaleY, swingAngle, swingSpeed, weaponDamage, knockbackStrength, distanceFromPlayer);
+            Destroy(controller.holsterInstance.gameObject);
+            controller.holsterInstance = Instantiate( weaponType);
+            controller.holsterInstance.transform.parent = controller.transform;
+            controller.holsterInstance.UpdateWeapon(sprite, startAngle, scaleX, scaleY, swingAngle, swingSpeed, weaponDamage, knockbackStrength, distanceFromPlayer);
             //Destroy(this.gameObject);
         }
             

@@ -37,8 +37,8 @@ public class RewiredControl : ActorControlBase
     }
 
     private void UpdateAttack()
-    {
-        if(player.GetButtonDown("Primary Action"))
+    { 
+        if(player.GetButton("Primary Action"))
             OnPrimaryPressed();
     }
 

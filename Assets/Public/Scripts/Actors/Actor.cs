@@ -7,15 +7,15 @@ public class Actor : MonoBehaviour
     public ActorMovementModel Movement;
     public int health;
     public int maxHealth;
-    private SymetricShooterCore m_projectileShoorter;
+    //private SymetricShooterCore m_projectileShoorter;
 
     private void Awake()
     {
-        m_projectileShoorter = new SymetricShooterCore();
+      //  m_projectileShoorter = new SymetricShooterCore();
     }
 
-    internal SymetricShooterCore getProjectileShooter()
-    {
-        return m_projectileShoorter;
-    }
+    //internal SymetricShooterCore getProjectileShooter()
+    //{
+    //    return m_projectileShoorter;
+    //}
 }
