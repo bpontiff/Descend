@@ -27600,6 +27600,7 @@ MonoBehaviour:
   Movement: {fileID: 1431048132}
   health: 5
   maxHealth: 5
+  damageAmount: 1
 --- !u!4 &1431048134
 Transform:
   m_ObjectHideFlags: 0

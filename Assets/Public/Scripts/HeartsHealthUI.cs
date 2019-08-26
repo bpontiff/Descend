@@ -57,7 +57,7 @@ public class HeartsHealthUI : MonoBehaviour
     private void HeartsHealthSystem_OnHealed(object sender, System.EventArgs e)
     {
         // Hearts health system was healed
-        RefreshAllHearts();
+        //RefreshAllHearts();
         List<HeartsHealthSystem.Heart> hearts = heartsHealthSystem.GetHearts();
         for (int i = 0; i < heartImages.Count; i++)
         {
