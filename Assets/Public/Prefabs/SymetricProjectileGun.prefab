@@ -43,12 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152e3ba596a944145bf412561d2869dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 5
   knockbackStrength: 500
   knockbackSource: {fileID: 0}
+  secDelayBetweenShots: 1
+  timeTillNextShot: 0
   projectile: {fileID: 7504460058591011067, guid: 3c43fd33057c21742979750c049f1755,
     type: 3}
-  projectileSpeed: 3
+  projectileSpeed: 2
   startAngle: 0
-  projectileCount: 5
-  angleBetweenShots: 5
+  projectileCount: 3
+  angleBetweenShots: 50

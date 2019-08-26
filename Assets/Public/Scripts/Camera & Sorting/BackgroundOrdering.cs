@@ -9,6 +9,12 @@ public class BackgroundOrdering : MonoBehaviour
     void Start()
     {
         //Set the background tile parent to be the max negative z order
-        GetComponentInChildren<TilemapRenderer>().sortingOrder = -32768;
+        TilemapRenderer[]
+                tileRenders = GetComponentsInChildren<TilemapRenderer>();
+        foreach (TilemapRenderer render in tileRenders)
+        {
+            render.sortingOrder = -32768;
+        }
     }
+
 }

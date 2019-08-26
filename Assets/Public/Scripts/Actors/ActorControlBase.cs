@@ -4,11 +4,16 @@ using System.Collections;
 public class ActorControlBase : MonoBehaviour
 {
     protected Actor m_Actor;
-    public WeaponCore weapon;
+    public WeaponHolsterCore weaponHolsterPrefab;
+
+    [HideInInspector]
+    public WeaponHolsterCore holsterInstance;
 
     void Awake()
     {
         m_Actor = GetComponent<Actor>();
+        holsterInstance = Instantiate(weaponHolsterPrefab);
+        holsterInstance.transform.parent = this.transform;
     }
 
     protected Vector2 GetDiagonalDirection(Vector2 direction, float threshold)
@@ -46,7 +51,13 @@ public class ActorControlBase : MonoBehaviour
 
     protected void OnPrimaryPressed()
     {
+        if (holsterInstance == null)
+        {
+            holsterInstance = Instantiate(weaponHolsterPrefab);
+            holsterInstance.transform.parent = this.transform;
+        }
+
         //Set the knockback source to be the player
-        weapon.PrimaryAction(m_Actor);
+        holsterInstance.PrimaryAction(m_Actor);
     }
 }

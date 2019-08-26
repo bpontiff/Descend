@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3366680307525841301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3366680307525841296}
+  - component: {fileID: -4643300988332534371}
+  m_Layer: 0
+  m_Name: WeaponHolsteSwung
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3366680307525841296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3366680307525841301}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 2.1, y: 4.8, z: -1.5444465}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &-4643300988332534371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3366680307525841301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7069f4a2c4bc242980ab7be7fe140c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  knockbackStrength: 500
+  knockbackSource: {fileID: 0}
+  secDelayBetweenShots: 1
+  timeTillNextShot: 0
+  sprite: {fileID: -2425411195009957671, guid: 80006d20517e13b4c9275b7e58322632, type: 3}
+  scaleX: 0.5
+  scaleY: 0.5
+  startAngle: 25
+  swingAngle: 75
+  swingSpeed: 150
+  distanceFromPlayer: 1
+  RotationAxis: {x: 0, y: 0, z: 1}
+  weaponPrefab: {fileID: 3366680307525841298, guid: 271babdec93aa0548bc31567a167f9f5,
+    type: 3}

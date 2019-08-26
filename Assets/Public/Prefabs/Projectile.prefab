@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -622297488928387530}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Player
+  m_TagString: ProjectileBase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   damage: 1
   knockbackStrength: 1
   knockbackSource: {fileID: 0}
+  target: 
   movementSpeed: 3
 --- !u!50 &577411404091781953
 Rigidbody2D:

@@ -95,7 +95,7 @@ public class ActorMovementModel : MonoBehaviour
             }
 
             if(prevDir != currectDirection)
-                this.GetComponent<ActorControlBase>().weapon.UpdateDirection(prevDir, currectDirection);
+                this.GetComponent<ActorControlBase>().weaponHolsterPrefab.UpdateDirection(prevDir, currectDirection);
         }
     }
 

@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : DamageCore
 {
     private Rigidbody2D m_Body;
+    public string target;
+
 
     public float movementSpeed;
     private Vector3 m_MovementDirection = new Vector3(0,0,0);
