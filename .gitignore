@@ -6,6 +6,7 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 /[Aa]ssets/Private/
+/[Aa]ssets/Descend_Private/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta

@@ -6,34 +6,22 @@ namespace Assets.Public.Scripts
 {
     class Player : Actor
     {
-        public Image[] hearts;
-        public Sprite fullHeart;
-        public Sprite emptyHeart;
+        private HeartsHealthSystem heartsHealthSystem;
 
-        void Update ()
+        public void SetHeartsHealthSystem(HeartsHealthSystem heartsHealthSystem)
         {
-            if (health > maxHealth)
-            {
-                health = maxHealth;
-            }
+            this.heartsHealthSystem = heartsHealthSystem;
+        }
 
-            for (int i = 0; i < hearts.Length; i++) {
-                if (i < health)
-                {
-                    hearts[i].sprite = fullHeart;
-                } else
-                {
-                    hearts[i].sprite = emptyHeart;
-                }
+        public void Damage(int damageAmount)
+        {
+            heartsHealthSystem.Damage(damageAmount);
+            // TODO: Check for death
+        }
 
-                if (i < maxHealth)
-                {
-                    hearts[i].enabled = true;
-                } else
-                {
-                    hearts[i].enabled = false;
-                }
-            }
+        public void Heal(int healAmount)
+        {
+            heartsHealthSystem.Heal(healAmount);
         }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Actor : MonoBehaviour
 {
     public ActorMovementModel Movement;
-    public int health;
     public int maxHealth;
     //private SymetricShooterCore m_projectileShoorter;
 
