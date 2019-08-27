@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
-    [SerializeField] private int damageAmount;
+    [SerializeField] private int damageAmount = 0;
 
     void OnTriggerEnter2D(Collider2D col)
     {

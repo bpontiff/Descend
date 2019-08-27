@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HealingItem : MonoBehaviour
 {
-    [SerializeField] private int healAmount;
+    [SerializeField] private int healAmount = 0;
 
     void OnTriggerEnter2D(Collider2D col)
     {

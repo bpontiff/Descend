@@ -6,7 +6,7 @@ namespace Assets.Public.Scripts
     class Enemy : Actor
     {
         public int health;
-        [SerializeField] private int damageAmount;
+        [SerializeField] private int damageAmount = 0;
 
         private void Start()
         {
