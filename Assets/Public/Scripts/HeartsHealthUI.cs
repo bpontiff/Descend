@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Public.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,10 +16,12 @@ public class HeartsHealthUI : MonoBehaviour
     private Sprite heart3Sprite;
     [SerializeField]
     private Sprite heart4Sprite;
-    [SerializeField]
-    private AnimationClip heartFullClip;
 
     private List<HeartImage> heartImages;
+
+    public int playerNum;
+    private Player player;
+
     private HeartsHealthSystem heartsHealthSystem;
 
     private void Awake()
@@ -28,19 +31,22 @@ public class HeartsHealthUI : MonoBehaviour
 
     private void Start()
     {
-        HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(4);
+        player = GameObject.Find("Player" + playerNum).GetComponent<Player>();
+
+        HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(player.maxHealth);
         SetHeartsHealthSystem(heartsHealthSystem);
     }
 
     public void SetHeartsHealthSystem(HeartsHealthSystem heartsHealthSystem)
     {
         this.heartsHealthSystem = heartsHealthSystem;
+        this.player.SetHeartsHealthSystem(heartsHealthSystem);
 
         Vector2 heartAnchoredPosition = new Vector2(0, 0);
         foreach (HeartsHealthSystem.Heart heart in heartsHealthSystem.GetHearts())
         {
             CreateHeartImage(heartAnchoredPosition).SetHeartFragments(heart.GetFragments());
-            heartAnchoredPosition += new Vector2(20, 0);
+            heartAnchoredPosition += new Vector2(25, 0);
         }
 
         heartsHealthSystem.OnDamaged += HeartsHealthSystem_OnDamaged;
@@ -51,25 +57,13 @@ public class HeartsHealthUI : MonoBehaviour
     private void HeartsHealthSystem_OnDamaged(object sender, System.EventArgs e)
     {
         // Hearts health system was damaged
-        RefreshAllHearts();
+        refreshHearts(sender);
     }
 
     private void HeartsHealthSystem_OnHealed(object sender, System.EventArgs e)
     {
         // Hearts health system was healed
-        //RefreshAllHearts();
-        List<HeartsHealthSystem.Heart> hearts = heartsHealthSystem.GetHearts();
-        for (int i = 0; i < heartImages.Count; i++)
-        {
-            HeartImage heartImage = heartImages[i];
-            HeartsHealthSystem.Heart heart = hearts[i];
-            Image currentHealth = heartImage.GetHeartImage();
-            heartImage.SetHeartFragments(heart.GetFragments());
-            if (heart.GetFragments() == HeartsHealthSystem.MAX_FRAGMENT_AMOUNT && currentHealth != heart4Sprite)
-            {
-                heartImage.PlayHeartFullAnimation();
-            }
-        }
+        refreshHearts(sender);
     }
 
     private void HeartsHealthSystem_OnDead(object sender, System.EventArgs e)
@@ -77,21 +71,24 @@ public class HeartsHealthUI : MonoBehaviour
         // TODO: Do something here to show death
     }
 
-    private void RefreshAllHearts()
+    private void refreshHearts(object sender)
     {
-        List<HeartsHealthSystem.Heart> hearts = heartsHealthSystem.GetHearts();
-        for (int i = 0; i < heartImages.Count; i++)
+        if (sender == this.heartsHealthSystem)
         {
-            HeartImage heartImage = heartImages[i];
-            HeartsHealthSystem.Heart heart = hearts[i];
-            heartImage.SetHeartFragments(heart.GetFragments());
+            List<HeartsHealthSystem.Heart> hearts = heartsHealthSystem.GetHearts();
+            for (int i = 0; i < heartImages.Count; i++)
+            {
+                HeartImage heartImage = heartImages[i];
+                HeartsHealthSystem.Heart heart = hearts[i];
+                heartImage.SetHeartFragments(heart.GetFragments());
+            }
         }
     }
 
     private HeartImage CreateHeartImage(Vector2 anchoredPosition)
     {
         // Create Game Object
-        GameObject heartGameObject = new GameObject("Heart", typeof(Image), typeof(Animation));
+        GameObject heartGameObject = new GameObject("Heart", typeof(Image));
         // Set as child of this transform
         heartGameObject.transform.SetParent(transform);
         heartGameObject.transform.localPosition = Vector3.zero;
@@ -100,13 +97,11 @@ public class HeartsHealthUI : MonoBehaviour
         heartGameObject.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
         heartGameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(15, 15);
 
-        heartGameObject.GetComponent<Animation>().AddClip(heartFullClip, "HeartFull");
-
         // Set heart sprite
         Image heartImageUI = heartGameObject.GetComponent<Image>();
         heartImageUI.sprite = heart4Sprite;
 
-        HeartImage heartImage = new HeartImage(this, heartImageUI, heartGameObject.GetComponent<Animation>());
+        HeartImage heartImage = new HeartImage(this, heartImageUI);
         heartImages.Add(heartImage);
 
         return heartImage;
@@ -117,13 +112,11 @@ public class HeartsHealthUI : MonoBehaviour
     {
         private Image heartImage;
         private HeartsHealthUI heartsHealthUI;
-        private Animation animation;
 
-        public HeartImage(HeartsHealthUI heartsHealthUI, Image heartImage, Animation animation)
+        public HeartImage(HeartsHealthUI heartsHealthUI, Image heartImage)
         {
             this.heartsHealthUI = heartsHealthUI;
             this.heartImage = heartImage;
-            this.animation = animation;
         }
 
         public Image GetHeartImage()
@@ -141,11 +134,6 @@ public class HeartsHealthUI : MonoBehaviour
                 case 3: heartImage.sprite = heartsHealthUI.heart3Sprite; break;
                 case 4: heartImage.sprite = heartsHealthUI.heart4Sprite; break;
             }
-        }
-
-        public void PlayHeartFullAnimation()
-        {
-            animation.Play("HeartFull", PlayMode.StopAll);
         }
 
     }
