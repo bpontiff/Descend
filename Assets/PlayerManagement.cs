@@ -83,7 +83,6 @@ public class PlayerManagement : MonoBehaviour
         {
             case 0:
                 throw new System.ArgumentOutOfRangeException();
-                break;
             case 1:
                 activeCams[0].GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 1f, 1f);
                 break;

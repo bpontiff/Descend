@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class HeartsHealthUI : MonoBehaviour
 {
     [SerializeField]
+    private float screenSizePercent;
+    [SerializeField]
     private Sprite heart0Sprite;
     [SerializeField]
     private Sprite heart1Sprite;
@@ -31,10 +33,17 @@ public class HeartsHealthUI : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Player" + playerNum).GetComponent<Player>();
+        player = GameObject.Find("Player" + (playerNum + 1)).GetComponent<Player>();
 
         HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(player.maxHealth);
         SetHeartsHealthSystem(heartsHealthSystem);
+    }
+
+    private void Update()
+    {
+
+
+        Debug.Log(GetComponentInParent<Canvas>().worldCamera.scaledPixelWidth);
     }
 
     public void SetHeartsHealthSystem(HeartsHealthSystem heartsHealthSystem)
@@ -46,7 +55,9 @@ public class HeartsHealthUI : MonoBehaviour
         foreach (HeartsHealthSystem.Heart heart in heartsHealthSystem.GetHearts())
         {
             CreateHeartImage(heartAnchoredPosition).SetHeartFragments(heart.GetFragments());
-            heartAnchoredPosition += new Vector2(25, 0);
+            float pixelWidth = GetComponentInParent<Canvas>().worldCamera.scaledPixelWidth;
+            float size = pixelWidth * (screenSizePercent / 2);
+            heartAnchoredPosition += new Vector2(size, 0);
         }
 
         heartsHealthSystem.OnDamaged += HeartsHealthSystem_OnDamaged;
@@ -92,10 +103,12 @@ public class HeartsHealthUI : MonoBehaviour
         // Set as child of this transform
         heartGameObject.transform.SetParent(transform);
         heartGameObject.transform.localPosition = Vector3.zero;
-
+        float pixelWidth = GetComponentInParent<Canvas>().worldCamera.scaledPixelWidth;
+        float size = pixelWidth * (screenSizePercent / 100);
         // Locate and size heart
         heartGameObject.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
-        heartGameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(15, 15);
+        heartGameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
+
 
         // Set heart sprite
         Image heartImageUI = heartGameObject.GetComponent<Image>();
