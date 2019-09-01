@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Background
   - ProjectileBase
+  - CameraConfiner
+  - Trap
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,7 @@ namespace Assets.Public.Scripts
             this.heartsHealthSystem = heartsHealthSystem;
         }
 
-        public void Damage(int damageAmount)
+        public override void Damage(int damageAmount)
         {
             heartsHealthSystem.Damage(damageAmount);
             // TODO: Check for death

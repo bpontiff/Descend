@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ActorControlBase : MonoBehaviour
 {
@@ -9,11 +10,25 @@ public class ActorControlBase : MonoBehaviour
     [HideInInspector]
     public WeaponHolsterCore holsterInstance;
 
+
+    public Text notificationText;
+
+
+    public DialogueManager dialogueManager;
+    public GameObject interactObj;
+    private bool curInteracting;
+
+
     void Awake()
     {
         m_Actor = GetComponent<Actor>();
         holsterInstance = Instantiate(weaponHolsterPrefab);
         holsterInstance.transform.parent = this.transform;
+
+        if(dialogueManager == null)
+        {
+            throw new System.Exception("Dialog Manager not configured for this player");
+        }
     }
 
     protected Vector2 GetDiagonalDirection(Vector2 direction, float threshold)
@@ -49,15 +64,52 @@ public class ActorControlBase : MonoBehaviour
         m_Actor.Movement.SetDirection(direction);
     }
 
+    public void setIntectingObj(GameObject interact)
+    {
+        interactObj = interact;
+        notificationText.text = "Press Action to Interact";
+    }
+
+    public void clearInteractingObj()
+    {
+        interactObj = null;
+        curInteracting = false;
+        dialogueManager.EndDialogue();
+        notificationText.text = "";
+    }
+
     protected void OnPrimaryPressed()
     {
-        if (holsterInstance == null)
+        if (interactObj != null)
         {
-            holsterInstance = Instantiate(weaponHolsterPrefab);
-            holsterInstance.transform.parent = this.transform;
+            if (!curInteracting)
+            { 
+                interactObj.GetComponent<DialogueTrigger>().TriggerDialogue(dialogueManager);
+                notificationText.text = "";
+                curInteracting = true;
+            }
+            else
+            {
+                if(!dialogueManager.DisplayNextSentence())
+                {
+                    this.clearInteractingObj();
+                }
+            }
         }
+    }
 
-        //Set the knockback source to be the player
-        holsterInstance.PrimaryAction(m_Actor);
+    protected void OnPrimaryHeld()
+    {
+        if (interactObj == null)
+        {
+            if (holsterInstance == null)
+            {
+                holsterInstance = Instantiate(weaponHolsterPrefab);
+                holsterInstance.transform.parent = this.transform;
+            }
+
+            //Set the knockback source to be the player
+            holsterInstance.PrimaryAction(m_Actor);
+        }
     }
 }

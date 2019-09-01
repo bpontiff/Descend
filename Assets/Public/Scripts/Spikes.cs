@@ -3,19 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spikes : MonoBehaviour
+public class Spikes : DamageCore
 {
-    [SerializeField] private int damageAmount = 0;
-
-    void OnTriggerEnter2D(Collider2D col)
+    private void Awake()
     {
-        Player player = col.GetComponent<Player>();
-        if (player != null)
-        {
-            // We hit the Player
-            //Vector3 knockbackDir = (player.GetPosition() - transform.position).normalized;
-            player.Damage(damageAmount);
-        }
-
+        knockbackSource = this.gameObject;
     }
 }

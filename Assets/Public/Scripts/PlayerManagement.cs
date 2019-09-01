@@ -4,6 +4,8 @@ using Rewired;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using Cinemachine;
+using System.Linq;
 
 public class PlayerManagement : MonoBehaviour
 {
@@ -15,7 +17,12 @@ public class PlayerManagement : MonoBehaviour
     public List<Player> playerControls = new List<Player>();
 
     [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
-    private bool initialized;
+    private bool initialized = false;
+
+    private void Awake()
+    {
+        
+    }
 
     void Update()
     {
@@ -23,12 +30,15 @@ public class PlayerManagement : MonoBehaviour
 
         for (int i = 0; i < playerCount; i++)
         {
-            if (playerControls[i].GetButtonUp("Pause"))
+            if (playerGOs[i] != null)
             {
-                if(playerGOs[i] != null)
+                if (playerControls[i].GetButtonUp("Pause"))
                 {
-                    playerGOs[i].SetActive(!playerGOs[i].activeSelf);
-                    updateCameras();
+                    if (playerGOs[i] != null)
+                    {
+                        playerGOs[i].SetActive(!playerGOs[i].activeSelf);
+                        updateCameras();
+                    }
                 }
             }
         }
@@ -36,37 +46,57 @@ public class PlayerManagement : MonoBehaviour
 
     private void Initialize()
     {
-        //var cameras = FindObjectsOfType<Camera>();
-        //var players = FindObjectsOfType<Actor>();
-        for (int i = 0; i < playerCount; i++)
-        {
-            playerControls.Add(ReInput.players.GetPlayer(i));
-        }
-
-        /* Finish to dynamically add cameras and players
+        initialized = true;
+        /* Need to rework auto finding/creating cameras and players. Set statically for now
+        var cameras = FindObjectsOfType<Camera>();
+        var players = FindObjectsOfType<Actor>();
         foreach (Actor play in players)
         {
             if(play.tag == "Player")
             {
-                playerGOs.Add(play.gameObject);
+                if (playerGOs.Count == 0)
+                    playerGOs.Add(play.gameObject);
+                else {
+                    for(int i = 0; i < playerGOs.Count; i++)
+                    {
+                        if (play.GetComponent<RewiredControl>().playerId < playerGOs[i].GetComponent<RewiredControl>().playerId)
+                        {
+                            playerGOs.Insert(i, play.gameObject);
+                            break;
+                        }
+                    }
+                }
             }
         }
         foreach (Camera cam in cameras)
         {
             playerCams.Add(cam.gameObject);
+
+            if (playerCams.Count == 0)
+                playerCams.Add(cam.gameObject);
+            else
+            {
+                for (int i = 0; i < playerGOs.Count; i++)
+                {
+                    if (cam.GetComponent<CinemachineBrain>().ActiveVirtualCamera.Follow.GetComponent<RewiredControl>().playerId
+                        < playerCams[i].GetComponent<CinemachineBrain>().ActiveVirtualCamera.Follow.GetComponent<RewiredControl>().playerId)
+                    {
+                        playerCams.Insert(i, cam.gameObject);
+                        break;
+                    }
+                }
+            }
+        }
+        */
+        for (int i = 0; i < playerGOs.Count; i++)
+        {
+            playerControls.Add(ReInput.players.GetPlayer(i));
         }
 
-        playerGOs.Sort(delegate(GameObject a, GameObject b)
-        {
-            return (a.GetComponents<Actor>)
-        })
-        */
-
         updateCameras();
-        initialized = true;
     }
 
-
+   
     private void updateCameras()
     {
         List<GameObject> activeCams = new List<GameObject>();
@@ -78,7 +108,6 @@ public class PlayerManagement : MonoBehaviour
                 if(playerCams[i] != null)
                     playerCams[i].GetComponent<Camera>().rect = new Rect(0f, 0f, 0f, 0f);
         }
-
         switch (activeCams.Count)
         {
             case 0:

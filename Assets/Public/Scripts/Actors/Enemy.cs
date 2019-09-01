@@ -12,7 +12,6 @@ namespace Assets.Public.Scripts
         {
             health = maxHealth;
         }
-
         void OnCollisionEnter2D(Collision2D col)
         {
             Player player = col.gameObject.GetComponent<Player>();
@@ -23,6 +22,12 @@ namespace Assets.Public.Scripts
                 player.Damage(damageAmount);
             }
 
+        }
+
+        public override void Damage(int damageAmount)
+        {
+            health -= damageAmount;
+            // TODO: Check for death
         }
     }
 }

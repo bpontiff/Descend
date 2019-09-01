@@ -69,6 +69,12 @@ public class DamageCore : MonoBehaviour
                 player.Damage(damage);
                 ApplyKnockback(col.gameObject);
             }
+            else if ("Trap".Equals(gameObject.tag))
+            {
+                Actor actor = col.gameObject.GetComponent<Actor>();
+                actor.Damage(damage);
+                ApplyKnockback(col.gameObject);
+            }
         }
     }
 }

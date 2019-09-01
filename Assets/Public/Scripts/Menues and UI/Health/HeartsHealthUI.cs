@@ -33,17 +33,15 @@ public class HeartsHealthUI : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Player" + (playerNum + 1)).GetComponent<Player>();
+        GameObject playerGO = GameObject.Find("Player" + (playerNum + 1));
+        if (playerGO == null)
+            return;
+        player = playerGO.GetComponent<Player>();
+        if (player == null)
+            return;
 
         HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(player.maxHealth);
         SetHeartsHealthSystem(heartsHealthSystem);
-    }
-
-    private void Update()
-    {
-
-
-        Debug.Log(GetComponentInParent<Canvas>().worldCamera.scaledPixelWidth);
     }
 
     public void SetHeartsHealthSystem(HeartsHealthSystem heartsHealthSystem)
