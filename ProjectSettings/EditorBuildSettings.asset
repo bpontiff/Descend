@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Public/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Public/Scenes/Dungeon/DungeonRooms/DungeonStart.unity
+    guid: 8ab38552e0b827c4ca712e87850d203d
+  - enabled: 1
+    path: Assets/Public/Scenes/Dungeon/DungeonRooms/DungeonMain.unity
+    guid: aa4420c09fa6124409b397e74cc68097
+  - enabled: 1
+    path: Assets/Public/Scenes/Dungeon/DungeonRooms/DungeonEnd.unity
+    guid: 786273619c989dc4e969e6ce2c035502
   m_configObjects: {}

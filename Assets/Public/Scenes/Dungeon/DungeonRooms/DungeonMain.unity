@@ -399,13 +399,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7bf1315bb115a4ca8eb188a4c3cde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenSizePercent: 0.1
-  heart0Sprite: {fileID: 21300000, guid: 8b27518e82eba0e4688412eee18b5642, type: 3}
-  heart1Sprite: {fileID: 21300000, guid: 2f29f1fe1023b334e9dd51d0ccd1f078, type: 3}
-  heart2Sprite: {fileID: 21300000, guid: cafb8af22b8ede541a3f9c5b7966623d, type: 3}
-  heart3Sprite: {fileID: 21300000, guid: 64d2b6f4a4e791445b2b4661c60c3c61, type: 3}
-  heart4Sprite: {fileID: 21300000, guid: 1d1a3515ecb8daf439baad3970aae9ea, type: 3}
   playerNum: 1
+--- !u!1 &306350283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 306350285}
+  - component: {fileID: 306350284}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &306350284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306350283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f94bdfc2a49b65448028df225af2608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadedRooms: []
+--- !u!4 &306350285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306350283}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.5712395, y: 12.077971, z: -10.894531}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &327644892
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,12 +492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7bf1315bb115a4ca8eb188a4c3cde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenSizePercent: 0.1
-  heart0Sprite: {fileID: 21300000, guid: 8b27518e82eba0e4688412eee18b5642, type: 3}
-  heart1Sprite: {fileID: 21300000, guid: 2f29f1fe1023b334e9dd51d0ccd1f078, type: 3}
-  heart2Sprite: {fileID: 21300000, guid: cafb8af22b8ede541a3f9c5b7966623d, type: 3}
-  heart3Sprite: {fileID: 21300000, guid: 64d2b6f4a4e791445b2b4661c60c3c61, type: 3}
-  heart4Sprite: {fileID: 21300000, guid: 1d1a3515ecb8daf439baad3970aae9ea, type: 3}
   playerNum: 1
 --- !u!1 &354432410
 GameObject:
@@ -2180,7 +2212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898200141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.160195, y: 11.199954, z: -8.42617}
+  m_LocalPosition: {x: 5.16, y: 5.2, z: -8.42617}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 564706878}
@@ -4422,12 +4454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7bf1315bb115a4ca8eb188a4c3cde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenSizePercent: 0.1
-  heart0Sprite: {fileID: 21300000, guid: 8b27518e82eba0e4688412eee18b5642, type: 3}
-  heart1Sprite: {fileID: 21300000, guid: 2f29f1fe1023b334e9dd51d0ccd1f078, type: 3}
-  heart2Sprite: {fileID: 21300000, guid: cafb8af22b8ede541a3f9c5b7966623d, type: 3}
-  heart3Sprite: {fileID: 21300000, guid: 64d2b6f4a4e791445b2b4661c60c3c61, type: 3}
-  heart4Sprite: {fileID: 21300000, guid: 1d1a3515ecb8daf439baad3970aae9ea, type: 3}
   playerNum: 0
 --- !u!1 &1925167383
 GameObject:
@@ -4551,12 +4577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7bf1315bb115a4ca8eb188a4c3cde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenSizePercent: 0.1
-  heart0Sprite: {fileID: 21300000, guid: 8b27518e82eba0e4688412eee18b5642, type: 3}
-  heart1Sprite: {fileID: 21300000, guid: 2f29f1fe1023b334e9dd51d0ccd1f078, type: 3}
-  heart2Sprite: {fileID: 21300000, guid: cafb8af22b8ede541a3f9c5b7966623d, type: 3}
-  heart3Sprite: {fileID: 21300000, guid: 64d2b6f4a4e791445b2b4661c60c3c61, type: 3}
-  heart4Sprite: {fileID: 21300000, guid: 1d1a3515ecb8daf439baad3970aae9ea, type: 3}
   playerNum: 0
 --- !u!1 &2009534522
 GameObject:
@@ -5118,7 +5138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136745213}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7699995, y: -4.41, z: -1.5738297}
+  m_LocalPosition: {x: 1.77, y: -4.41, z: -1.5738297}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 1214493337}

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SwungWeaponCore : WeaponCore
 {
@@ -25,24 +23,27 @@ public class SwungWeaponCore : WeaponCore
         transform.RotateAround(knockbackSource.transform.position, RotationAxis, Time.deltaTime * swingSpeed);
         if (m_angleMoved >= swingAngle)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
     public override void UpdateDirection(ActorMovementModel.Directions prevDir, ActorMovementModel.Directions currectDirection)
     {
         if (knockbackSource == null)
+        {
             return;
+        }
+
         UpdateDirection(prevDir, currectDirection);
-        Vector2 dist = this.transform.position - knockbackSource.transform.position;
+        Vector2 dist = transform.position - knockbackSource.transform.position;
         ActorMovementModel.Directions weaponDir = prevDir;
-        float angleAdjustment = this.transform.rotation.eulerAngles.z;
+        float angleAdjustment = transform.rotation.eulerAngles.z;
         float xx = 0;
         while (weaponDir != currectDirection)
         {
             if (weaponDir >= ActorMovementModel.Directions.COUNT - 1)
             {
-                weaponDir = (ActorMovementModel.Directions)0;
+                weaponDir = 0;
             }
             else
             {
@@ -53,7 +54,7 @@ public class SwungWeaponCore : WeaponCore
             dist.x = dist.y * -1;
             dist.y = xx;
         }
-        transform.position = new Vector2( knockbackSource.transform.position.x + dist.x, knockbackSource.transform.position.y + dist.y);
+        transform.position = new Vector2(knockbackSource.transform.position.x + dist.x, knockbackSource.transform.position.y + dist.y);
         transform.rotation = Quaternion.Euler(Vector3.forward * angleAdjustment);
     }
 

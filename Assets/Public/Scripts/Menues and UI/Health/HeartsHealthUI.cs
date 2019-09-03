@@ -1,5 +1,4 @@
 ﻿using Assets.Public.Scripts;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,17 +6,17 @@ using UnityEngine.UI;
 public class HeartsHealthUI : MonoBehaviour
 {
     [SerializeField]
-    private float screenSizePercent;
+    private readonly float screenSizePercent;
     [SerializeField]
-    private Sprite heart0Sprite;
+    private readonly Sprite heart0Sprite;
     [SerializeField]
-    private Sprite heart1Sprite;
+    private readonly Sprite heart1Sprite;
     [SerializeField]
-    private Sprite heart2Sprite;
+    private readonly Sprite heart2Sprite;
     [SerializeField]
-    private Sprite heart3Sprite;
+    private readonly Sprite heart3Sprite;
     [SerializeField]
-    private Sprite heart4Sprite;
+    private readonly Sprite heart4Sprite;
 
     private List<HeartImage> heartImages;
 
@@ -35,10 +34,15 @@ public class HeartsHealthUI : MonoBehaviour
     {
         GameObject playerGO = GameObject.Find("Player" + (playerNum + 1));
         if (playerGO == null)
+        {
             return;
+        }
+
         player = playerGO.GetComponent<Player>();
         if (player == null)
+        {
             return;
+        }
 
         HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(player.maxHealth);
         SetHeartsHealthSystem(heartsHealthSystem);
@@ -47,7 +51,7 @@ public class HeartsHealthUI : MonoBehaviour
     public void SetHeartsHealthSystem(HeartsHealthSystem heartsHealthSystem)
     {
         this.heartsHealthSystem = heartsHealthSystem;
-        this.player.SetHeartsHealthSystem(heartsHealthSystem);
+        player.SetHeartsHealthSystem(heartsHealthSystem);
 
         Vector2 heartAnchoredPosition = new Vector2(0, 0);
         foreach (HeartsHealthSystem.Heart heart in heartsHealthSystem.GetHearts())
@@ -82,7 +86,7 @@ public class HeartsHealthUI : MonoBehaviour
 
     private void refreshHearts(object sender)
     {
-        if (sender == this.heartsHealthSystem)
+        if (sender == heartsHealthSystem)
         {
             List<HeartsHealthSystem.Heart> hearts = heartsHealthSystem.GetHearts();
             for (int i = 0; i < heartImages.Count; i++)
@@ -121,8 +125,8 @@ public class HeartsHealthUI : MonoBehaviour
     // Represents a single heart
     public class HeartImage
     {
-        private Image heartImage;
-        private HeartsHealthUI heartsHealthUI;
+        private readonly Image heartImage;
+        private readonly HeartsHealthUI heartsHealthUI;
 
         public HeartImage(HeartsHealthUI heartsHealthUI, Image heartImage)
         {
@@ -132,12 +136,12 @@ public class HeartsHealthUI : MonoBehaviour
 
         public Image GetHeartImage()
         {
-            return this.heartImage;
+            return heartImage;
         }
 
         public void SetHeartFragments(int fragments)
         {
-            switch(fragments)
+            switch (fragments)
             {
                 case 0: heartImage.sprite = heartsHealthUI.heart0Sprite; break;
                 case 1: heartImage.sprite = heartsHealthUI.heart1Sprite; break;

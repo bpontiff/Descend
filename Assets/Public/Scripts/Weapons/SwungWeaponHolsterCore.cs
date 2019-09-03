@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SwungWeaponHolsterCore : WeaponHolsterCore
 {
@@ -20,7 +18,10 @@ public class SwungWeaponHolsterCore : WeaponHolsterCore
     public override void PrimaryAction(Actor m_Actor)
     {
         if (weaponInstance != null)
+        {
             return;
+        }
+
         float modifiedAngle = WeaponCore.modifiedAngleCalc(startAngle, m_Actor) - 90;
         float myAngleInRads = (modifiedAngle * Mathf.PI) / 180;
         Vector3 startPos = new Vector3(Mathf.Cos(myAngleInRads) * distanceFromPlayer, Mathf.Sin(myAngleInRads) * distanceFromPlayer, 0);
@@ -33,35 +34,38 @@ public class SwungWeaponHolsterCore : WeaponHolsterCore
         weapon.GetComponent<Transform>().localScale = new Vector3(scaleX, scaleY, 1);
         weaponInstance = weapon;
 
-        weaponInstance.sprite = this.sprite;
-        weaponInstance.startAngle = this.startAngle;
-        weaponInstance.scaleX = this.scaleX;
-        weaponInstance.scaleY = this.scaleY;
-        weaponInstance.swingAngle = this.swingAngle;
-        weaponInstance.swingSpeed = this.swingSpeed;
-        weaponInstance.damage = this.damage;
-        weaponInstance.knockbackStrength = this.knockbackStrength;
-        weaponInstance.distanceFromPlayer = this.distanceFromPlayer;
+        weaponInstance.sprite = sprite;
+        weaponInstance.startAngle = startAngle;
+        weaponInstance.scaleX = scaleX;
+        weaponInstance.scaleY = scaleY;
+        weaponInstance.swingAngle = swingAngle;
+        weaponInstance.swingSpeed = swingSpeed;
+        weaponInstance.damage = damage;
+        weaponInstance.knockbackStrength = knockbackStrength;
+        weaponInstance.distanceFromPlayer = distanceFromPlayer;
     }
 
     public override void UpdateDirection(ActorMovementModel.Directions prevDir, ActorMovementModel.Directions currectDirection)
     {
         if (weaponInstance == null)
+        {
             return;
-        weaponInstance.UpdateDirection( prevDir,  currectDirection);
+        }
+
+        weaponInstance.UpdateDirection(prevDir, currectDirection);
     }
 
     public override void UpdateWeapon(Sprite updatedSprite, float updatedStartAngle, float updatedScaleX, float updatedScaleY,
         float updatedSwingAngle, float updatedSwingSpeed, int updatedWeaponDamage, float updatedKnockbackStrength, float updatedDistanceFromPlayer)
     {
-        this.sprite = updatedSprite;
-        this.startAngle = updatedStartAngle;
-        this.scaleX = updatedScaleX;
-        this.scaleY = updatedScaleY;
-        this.swingAngle = updatedSwingAngle;
-        this.swingSpeed = updatedSwingSpeed;
-        this.damage = updatedWeaponDamage;
-        this.knockbackStrength = updatedKnockbackStrength;
-        this.distanceFromPlayer = updatedDistanceFromPlayer;
+        sprite = updatedSprite;
+        startAngle = updatedStartAngle;
+        scaleX = updatedScaleX;
+        scaleY = updatedScaleY;
+        swingAngle = updatedSwingAngle;
+        swingSpeed = updatedSwingSpeed;
+        damage = updatedWeaponDamage;
+        knockbackStrength = updatedKnockbackStrength;
+        distanceFromPlayer = updatedDistanceFromPlayer;
     }
 }

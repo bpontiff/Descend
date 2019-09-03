@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SymetricShootingHolsterCore : WeaponHolsterCore
 {
@@ -8,16 +6,15 @@ public class SymetricShootingHolsterCore : WeaponHolsterCore
     public float projectileSpeed;
     public float startAngle;
 
-    [Range(1,500)]
+    [Range(1, 500)]
     public int projectileCount;
     [Range(0.1f, 180.0f)]
     public float angleBetweenShots;
 
 
-
     public void Update()
     {
-        if(timeTillNextShot > 0)
+        if (timeTillNextShot > 0)
         {
             timeTillNextShot -= Time.deltaTime;
         }
@@ -27,14 +24,19 @@ public class SymetricShootingHolsterCore : WeaponHolsterCore
     public bool CanShoot()
     {
         if (timeTillNextShot <= 0)
+        {
             return true;
+        }
+
         return false;
     }
 
     public override void PrimaryAction(Actor m_Actor)
     {
         if (!CanShoot())
+        {
             return;
+        }
 
         float modifiedAngle = WeaponCore.modifiedAngleCalc(startAngle, m_Actor);
         int angleMod = 1;
@@ -42,13 +44,20 @@ public class SymetricShootingHolsterCore : WeaponHolsterCore
         for (int i = 0; i < projectileCount; i++)
         {
             if (i % 2 == 0)
+            {
                 angleMod = 1;
+            }
             else
+            {
                 angleMod = -1;
-            angleMultiple = ((i-1) / 2) + 1;
+            }
+
+            angleMultiple = ((i - 1) / 2) + 1;
 
             if (i == 0 || angleMultiple < 0)
+            {
                 angleMultiple = 0;
+            }
 
             createProjectile(m_Actor, modifiedAngle + angleBetweenShots * angleMultiple * angleMod, projectileSpeed);
         }
@@ -76,8 +85,8 @@ public class SymetricShootingHolsterCore : WeaponHolsterCore
             bullet.Source = m_Actor;
             bullet.setMovementDirection(startPos);
             bullet.knockbackSource = m_Actor.gameObject;
-            bullet.knockbackStrength = this.knockbackStrength;
-            bullet.damage = this.damage;
+            bullet.knockbackStrength = knockbackStrength;
+            bullet.damage = damage;
 
             bullet.transform.position = m_Actor.transform.position + startPos;
             bullet.transform.rotation = Quaternion.Euler(Vector3.forward * (-90 + angle));

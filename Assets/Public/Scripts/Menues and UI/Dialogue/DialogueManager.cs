@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,8 +11,9 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
 
     private Queue<string> dialogueQueue;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         dialogueQueue = new Queue<string>();
     }
@@ -26,7 +26,7 @@ public class DialogueManager : MonoBehaviour
 
         nameText.text = dialogue.name;
 
-        foreach(string sentence in dialogue.sentences)
+        foreach (string sentence in dialogue.sentences)
         {
             dialogueQueue.Enqueue(sentence);
         }
@@ -48,11 +48,11 @@ public class DialogueManager : MonoBehaviour
         return true;
     }
 
-    IEnumerator TypeDialogue (string sentence)
+    private IEnumerator TypeDialogue(string sentence)
     {
         dialogueText.text = "";
 
-        foreach(char letter in sentence.ToCharArray())
+        foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
             yield return null;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Room : MonoBehaviour
 {
@@ -8,14 +6,15 @@ public class Room : MonoBehaviour
     public int Width, Height, X, Y;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         //Room generation starting in a room that does not need it
         if (RoomController.roomControlInstance == null)
         {
             throw new System.Exception("Room generation started in location that does not have a RoomController");
-            return;
         }
+
+        RoomController.roomControlInstance.RegisterRoom(this);
     }
 
     private void OnDrawGizmos()

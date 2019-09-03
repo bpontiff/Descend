@@ -1,13 +1,11 @@
 ﻿using Assets.Public.Scripts;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealingItem : MonoBehaviour
 {
-    [SerializeField] private int healAmount = 0;
+    [SerializeField] private readonly int healAmount = 0;
 
-    void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         Player player = col.GetComponent<Player>();
         if (player != null)

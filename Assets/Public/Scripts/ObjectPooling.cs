@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -40,7 +39,7 @@ public class ObjectPooling : MonoBehaviour
             {
                 if (item.shouldExpand)
                 {
-                    return createPooledObj(item.objectToPool); 
+                    return createPooledObj(item.objectToPool);
                 }
             }
         }
@@ -51,7 +50,7 @@ public class ObjectPooling : MonoBehaviour
 
     private GameObject createPooledObj(GameObject objectToPool)
     {
-        GameObject obj = (GameObject)Instantiate(objectToPool);
+        GameObject obj = Instantiate(objectToPool);
         obj.SetActive(false);
         pooledObjects.Add(obj);
         return obj;

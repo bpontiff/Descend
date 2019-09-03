@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class WeaponCore : DamageCore
 {
-    
     public static float modifiedAngleCalc(float startAngle, Actor m_Actor)
     {
         Vector2 swingDir = m_Actor.GetComponent<ActorMovementModel>().GetFacingDirection();

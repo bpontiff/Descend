@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class HeartsHealthSystem
 {
@@ -10,20 +8,20 @@ public class HeartsHealthSystem
     public event EventHandler OnHealed;
     public event EventHandler OnDead;
 
-    private List<Heart> hearts;
+    private readonly List<Heart> hearts;
 
     public HeartsHealthSystem(int heartAmount)
     {
         hearts = new List<Heart>();
         for (int i = 0; i < heartAmount; i++)
         {
-            this.hearts.Add(new Heart(4));
+            hearts.Add(new Heart(4));
         }
     }
 
     public List<Heart> GetHearts()
     {
-        return this.hearts;
+        return hearts;
     }
 
     public void Damage(int damageAmount)
@@ -38,7 +36,8 @@ public class HeartsHealthSystem
                 // Heart cannot absorb full damageAmount, damage heart and keep going to next heart
                 damageAmount -= heart.GetFragments();
                 heart.Damage(heart.GetFragments());
-            } else
+            }
+            else
             {
                 // Heart can absorb full damageAmount, absorb and break out of the cycle
                 heart.Damage(damageAmount);
@@ -60,7 +59,7 @@ public class HeartsHealthSystem
     public void Heal(int healAmount)
     {
         // Cycle through all hearts starting from the beginning
-        foreach(Heart heart in hearts)
+        foreach (Heart heart in hearts)
         {
             int missingFragments = MAX_FRAGMENT_AMOUNT - heart.GetFragments();
             // Test if this heart can absorb healAmount
@@ -69,7 +68,8 @@ public class HeartsHealthSystem
                 // Heart cannot absorb full healAmount, heal heart and keep going to next heart
                 healAmount -= missingFragments;
                 heart.Heal(missingFragments);
-            } else
+            }
+            else
             {
                 // Heart can absorb full healAmount, absorb and break out of the cycle
                 heart.Heal(healAmount);
@@ -100,7 +100,7 @@ public class HeartsHealthSystem
 
         public int GetFragments()
         {
-            return this.fragments;
+            return fragments;
         }
 
         public void SetFragments(int fragments)
@@ -108,23 +108,25 @@ public class HeartsHealthSystem
             this.fragments = fragments;
         }
 
-        public void Damage (int damageAmount)
+        public void Damage(int damageAmount)
         {
             if (damageAmount >= fragments)
             {
                 fragments = 0;
-            } else
+            }
+            else
             {
                 fragments -= damageAmount;
             }
         }
 
-        public void Heal (int healAmount)
+        public void Heal(int healAmount)
         {
             if (fragments + healAmount > MAX_FRAGMENT_AMOUNT)
             {
                 fragments = MAX_FRAGMENT_AMOUNT;
-            } else
+            }
+            else
             {
                 fragments += healAmount;
             }

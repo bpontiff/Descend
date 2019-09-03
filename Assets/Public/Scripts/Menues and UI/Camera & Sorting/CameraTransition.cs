@@ -1,7 +1,4 @@
-﻿using Assets.Public.Scripts;
-using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Cinemachine;
 using UnityEngine;
 
 public class CameraTransition : MonoBehaviour
@@ -33,15 +30,16 @@ public class CameraTransition : MonoBehaviour
         return closest;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (cameraConfiner == null && col.GetComponent<RewiredControl>() == null) {
+        if (cameraConfiner == null && col.GetComponent<RewiredControl>() == null)
+        {
             throw new System.Exception("Camera Confiner for level does not exist or Rewired Control for player can not be found");
         }
         if (col.tag == "Player")
         {
             Cinemachine.CinemachineVirtualCamera[] cameras = FindObjectsOfType<Cinemachine.CinemachineVirtualCamera>();
-            foreach(Cinemachine.CinemachineVirtualCamera camera in cameras)
+            foreach (Cinemachine.CinemachineVirtualCamera camera in cameras)
             {
                 if (camera.Follow == col.transform)
                 {

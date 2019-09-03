@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Projectile : DamageCore
 {
@@ -10,15 +7,15 @@ public class Projectile : DamageCore
 
 
     public float movementSpeed;
-    private Vector3 m_MovementDirection = new Vector3(0,0,0);
+    private Vector3 m_MovementDirection = new Vector3(0, 0, 0);
 
-    void Awake()
+    private void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         m_Body.velocity = m_MovementDirection * movementSpeed;
     }

@@ -1,16 +1,11 @@
-﻿
-using System.Collections;
-using Rewired;
-using System;
-using UnityEngine;
+﻿using Rewired;
 using System.Collections.Generic;
-using Cinemachine;
-using System.Linq;
+using UnityEngine;
 
 public class PlayerManagement : MonoBehaviour
 {
 
-    private int playerCount = 4;
+    private readonly int playerCount = 4;
     public List<GameObject> playerGOs = new List<GameObject>();
     public List<GameObject> playerCams = new List<GameObject>();
 
@@ -21,12 +16,15 @@ public class PlayerManagement : MonoBehaviour
 
     private void Awake()
     {
-        
+
     }
 
-    void Update()
+    private void Update()
     {
-        if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
+        if (!initialized)
+        {
+            Initialize(); // Reinitialize after a recompile in the editor
+        }
 
         for (int i = 0; i < playerCount; i++)
         {
@@ -96,17 +94,21 @@ public class PlayerManagement : MonoBehaviour
         updateCameras();
     }
 
-   
+
     private void updateCameras()
     {
         List<GameObject> activeCams = new List<GameObject>();
         for (int i = 0; i < playerCount; i++)
         {
             if (playerGOs[i] != null && playerGOs[i].activeSelf == true)
+            {
                 activeCams.Add(playerCams[i]);
+            }
             else
-                if(playerCams[i] != null)
-                    playerCams[i].GetComponent<Camera>().rect = new Rect(0f, 0f, 0f, 0f);
+                if (playerCams[i] != null)
+            {
+                playerCams[i].GetComponent<Camera>().rect = new Rect(0f, 0f, 0f, 0f);
+            }
         }
         switch (activeCams.Count)
         {
