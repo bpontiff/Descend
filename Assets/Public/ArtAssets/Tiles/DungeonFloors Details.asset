@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Name: DungeonFloors Details
+  m_EditorClassIdentifier: 
+  m_DefaultSprite: {fileID: 6688757284627118830, guid: 2f01086aca1f7da45b918d5cfbf545cc,
+    type: 3}
+  m_DefaultGameObject: {fileID: 0}
+  m_DefaultColliderType: 1
+  m_TilingRules:
+  - m_Neighbors: 0000000000000000000000000000000000000000000000000000000000000000
+    m_Sprites:
+    - {fileID: -8821070283286049623, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 4276232715897315079, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 743648447233865162, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 7933941418105332535, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 8794339829995047195, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 8343581493411087946, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 1841462637668102663, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 5140468206933609584, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 8065737236289121960, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: -5511833224161410507, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 7236237403882107785, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: -2467965557541441510, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    m_GameObject: {fileID: 0}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_RuleTransform: 0
+    m_Output: 1
+    m_ColliderType: 1
+    m_RandomTransform: 0
+  - m_Neighbors: 0000000000000000000000000000000000000000000000000000000000000000
+    m_Sprites:
+    - {fileID: 7236237403882107785, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: -2467965557541441510, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 7054989227990223105, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 6688757284627118830, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    m_GameObject: {fileID: 6651469610122128982, guid: afb98ae13d2791b4493d547eb0387983,
+      type: 3}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_RuleTransform: 0
+    m_Output: 1
+    m_ColliderType: 1
+    m_RandomTransform: 0

@@ -9,6 +9,7 @@ TagManager:
   - ProjectileBase
   - CameraConfiner
   - Trap
+  - InvisWall
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Name: DungeonWalls Details
+  m_EditorClassIdentifier: 
+  m_DefaultSprite: {fileID: -3419295043370831813, guid: 2f01086aca1f7da45b918d5cfbf545cc,
+    type: 3}
+  m_DefaultGameObject: {fileID: 0}
+  m_DefaultColliderType: 1
+  m_TilingRules:
+  - m_Neighbors: 0000000000000000000000000000000000000000000000000000000000000000
+    m_Sprites:
+    - {fileID: -3419295043370831813, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: -5707205342686015116, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: -3729626666746964777, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: -602690349767825268, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 8997390384849158642, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 5395127055899305315, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: -591229625354011421, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: 8423269874398060560, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    - {fileID: -6844398654088687843, guid: 2f01086aca1f7da45b918d5cfbf545cc, type: 3}
+    m_GameObject: {fileID: 0}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_RuleTransform: 0
+    m_Output: 1
+    m_ColliderType: 1
+    m_RandomTransform: 0
