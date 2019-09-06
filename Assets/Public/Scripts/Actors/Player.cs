@@ -8,6 +8,7 @@ namespace Assets.Public.Scripts
     {
         private HeartsHealthSystem heartsHealthSystem;
 
+
         public void SetHeartsHealthSystem(HeartsHealthSystem heartsHealthSystem)
         {
             this.heartsHealthSystem = heartsHealthSystem;

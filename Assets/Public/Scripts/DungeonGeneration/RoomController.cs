@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class RoomInfo
 {
@@ -40,7 +43,7 @@ public class RoomController : MonoBehaviour
     public List<Room> loadedRooms = new List<Room>();
 
     //If a room is currently being loaded
-    private bool isLoadingRoom = false;
+    private bool isLoadingRoom, spawnedBossRoom, updatedRooms = false;
 
     private void Awake()
     {
@@ -54,8 +57,26 @@ public class RoomController : MonoBehaviour
 
     private void UpdateRoomQueue()
     {
-        if (isLoadingRoom || loadRoomQueue.Count == 0)
+        if (isLoadingRoom)
         {
+            return;
+        }
+
+        if (loadRoomQueue.Count == 0)
+        {
+            if (!spawnedBossRoom)
+            {
+                spawnedBossRoom = true;
+                StartCoroutine(SpawnBossRoom());
+            }
+            else if (spawnedBossRoom && !updatedRooms)
+            {
+                foreach (Room room in loadedRooms)
+                {
+                    room.RemoveUnconnectedDoors();
+                }
+                updatedRooms = true;
+            }
             return;
         }
 
@@ -63,15 +84,6 @@ public class RoomController : MonoBehaviour
         isLoadingRoom = true;
 
         StartCoroutine(LoadRoomRoutine(curLoadRoomData));
-    }
-
-    private void Start()
-    {
-        LoadRoom("Start", 0, 0);
-        LoadRoom("Start", 1, 0);
-        LoadRoom("Start", -1, 0);
-        LoadRoom("Start", 0, 1);
-        LoadRoom("Start", 0, -1);
     }
 
     public void LoadRoom(string name, int x, int y)
@@ -100,6 +112,15 @@ public class RoomController : MonoBehaviour
 
     public void RegisterRoom(Room room)
     {
+        //If a room already exists stop creating this room
+        if (DoesRoomExist(curLoadRoomData.X, curLoadRoomData.Y))
+        {
+            Destroy(room.gameObject);
+            isLoadingRoom = false;
+            return;
+        }
+
+        //Spawning a room
         room.transform.position = new Vector2(
             curLoadRoomData.X * room.Width,
             curLoadRoomData.Y * room.Height
@@ -113,11 +134,67 @@ public class RoomController : MonoBehaviour
 
         isLoadingRoom = false;
 
+        if (loadedRooms.Count == 0)
+        {
+            Cinemachine.CinemachineVirtualCamera[] cameras = FindObjectsOfType<Cinemachine.CinemachineVirtualCamera>();
+            foreach (Cinemachine.CinemachineVirtualCamera camera in cameras)
+            {
+                if (camera != null)
+                {
+                    PolygonCollider2D col = FindClosestConfiner().GetComponent<PolygonCollider2D>();
+                    CinemachineConfiner conf = camera.GetComponent<CinemachineConfiner>();
+                    conf.m_BoundingShape2D = col;
+                }
+            }
+        }
+
         loadedRooms.Add(room);
+
     }
+
+    IEnumerator SpawnBossRoom()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if(loadRoomQueue.Count == 0)
+        {
+            Room bossRoom = loadedRooms[loadedRooms.Count - 1];
+            Room tempRoom = new Room(bossRoom.X, bossRoom.Y);
+            Destroy(bossRoom.gameObject);
+            var roomToRemove = loadedRooms.Single(r => r.X == tempRoom.X && r.Y == tempRoom.Y);
+            loadedRooms.Remove(roomToRemove);
+            LoadRoom("End", tempRoom.X, tempRoom.Y);
+        }
+    }
+
+
+    public GameObject FindClosestConfiner()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("CameraConfiner");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach (GameObject go in gos)
+        {
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        return closest;
+    }
+
 
     public bool DoesRoomExist(int x, int y)
     {
         return loadedRooms.Find(item => item.X == x && item.Y == y) != null;
+    }
+
+    internal Room FindRoom(int x, int y)
+    {
+        return loadedRooms.Find(item => item.X == x && item.Y == y); ;
     }
 }

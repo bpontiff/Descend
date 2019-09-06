@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class RemoveIntersectingWalls : MonoBehaviour
 {
@@ -6,8 +7,16 @@ public class RemoveIntersectingWalls : MonoBehaviour
     {
         if (col.gameObject.tag == "InvisWall")
         {
-            Debug.Log(col.gameObject);
-            Destroy(col.gameObject);
+            if (this.GetComponent<Door>() != null)
+            {
+                this.GetComponent<Door>().removedWalls.Add(col.gameObject);
+                col.gameObject.SetActive(false);
+            }
+            else
+            {
+                Destroy(col.gameObject);
+            }
         }
     }
+
 }

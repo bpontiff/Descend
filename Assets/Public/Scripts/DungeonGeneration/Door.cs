@@ -1,16 +1,24 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private void Start()
+    public enum DoorDirection
     {
-
+        up, left, down, right
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
+    public DoorDirection doorDirection;
 
+    public List<GameObject> removedWalls;
+
+    public void RemoveDoor()
+    {
+        foreach (GameObject obj in removedWalls)
+        {
+            obj.SetActive(true);
+        }
+        this.gameObject.SetActive(false);
     }
 }
+    

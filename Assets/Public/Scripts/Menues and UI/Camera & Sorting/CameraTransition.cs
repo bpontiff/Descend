@@ -4,47 +4,29 @@ using UnityEngine;
 public class CameraTransition : MonoBehaviour
 {
     public GameObject cameraConfiner;
-
-    private void Awake()
-    {
-        cameraConfiner = FindClosestConfiner();
-    }
-
-    public GameObject FindClosestConfiner()
-    {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("CameraConfiner");
-        GameObject closest = null;
-        float distance = Mathf.Infinity;
-        Vector3 position = transform.position;
-        foreach (GameObject go in gos)
-        {
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
-            {
-                closest = go;
-                distance = curDistance;
-            }
-        }
-        return closest;
-    }
-
+    
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (cameraConfiner == null && col.GetComponent<RewiredControl>() == null)
+        if(cameraConfiner == null && col.tag.Equals("CameraConfiner"))
         {
-            throw new System.Exception("Camera Confiner for level does not exist or Rewired Control for player can not be found");
+            cameraConfiner = col.gameObject;
         }
-        if (col.tag == "Player")
+        else if (col.tag == "Player" && col.GetComponent<RewiredControl>() == null)
+        {
+            throw new System.Exception("Rewired Control for player can not be found");
+        }
+        if (col.tag == "Player" && cameraConfiner != null)
         {
             Cinemachine.CinemachineVirtualCamera[] cameras = FindObjectsOfType<Cinemachine.CinemachineVirtualCamera>();
             foreach (Cinemachine.CinemachineVirtualCamera camera in cameras)
             {
-                if (camera.Follow == col.transform)
+                if (camera != null && camera.gameObject.activeSelf)
                 {
-                    camera.gameObject.GetComponent<CinemachineConfiner>().m_BoundingShape2D = cameraConfiner.GetComponent<PolygonCollider2D>();
-                    camera.gameObject.GetComponent<CinemachineConfiner>().InvalidatePathCache();
+                    if (camera.Follow == col.transform)
+                    {
+                        camera.gameObject.GetComponent<CinemachineConfiner>().m_BoundingShape2D = cameraConfiner.GetComponent<PolygonCollider2D>();
+                        camera.gameObject.GetComponent<CinemachineConfiner>().InvalidatePathCache();
+                    }
                 }
             }
         }

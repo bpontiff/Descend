@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class HeartsHealthUI : MonoBehaviour
 {
     [SerializeField]
-    private readonly float screenSizePercent;
+    private float screenSizePercent;
     [SerializeField]
-    private readonly Sprite heart0Sprite;
+    private Sprite heart0Sprite;
     [SerializeField]
-    private readonly Sprite heart1Sprite;
+    private Sprite heart1Sprite;
     [SerializeField]
-    private readonly Sprite heart2Sprite;
+    private Sprite heart2Sprite;
     [SerializeField]
-    private readonly Sprite heart3Sprite;
+    private Sprite heart3Sprite;
     [SerializeField]
-    private readonly Sprite heart4Sprite;
+    private Sprite heart4Sprite;
 
     private List<HeartImage> heartImages;
 
