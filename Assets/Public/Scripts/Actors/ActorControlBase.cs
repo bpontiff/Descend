@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Assets.Public.Scripts;
 
 public class ActorControlBase : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class ActorControlBase : MonoBehaviour
         holsterInstance = Instantiate(weaponHolsterPrefab);
         holsterInstance.transform.parent = this.transform;
 
-        if(dialogueManager == null)
+        if(dialogueManager == null && gameObject.GetComponent<Player>() != null)
         {
             throw new System.Exception("Dialog Manager not configured for this player");
         }

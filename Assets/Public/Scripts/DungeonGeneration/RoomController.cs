@@ -28,10 +28,10 @@ public class RoomController : MonoBehaviour
 {
 
     //Singleton
-    public static RoomController roomControlInstance;
+    public static RoomController instance;
 
     //The Dungeon Level/Floor name
-    private readonly string dunLevelName = "Dungeon";
+    public string dungeonLevelName { get; set; }
 
     //Currently loading room data
     private RoomInfo curLoadRoomData;
@@ -44,10 +44,10 @@ public class RoomController : MonoBehaviour
 
     //If a room is currently being loaded
     private bool isLoadingRoom, spawnedBossRoom, updatedRooms = false;
-
+    
     private void Awake()
     {
-        roomControlInstance = this;
+        instance = this;
     }
 
     private void Update()
@@ -100,7 +100,7 @@ public class RoomController : MonoBehaviour
 
     private IEnumerator LoadRoomRoutine(RoomInfo info)
     {
-        string roomName = dunLevelName + info.name;
+        string roomName = dungeonLevelName + info.name;
 
         AsyncOperation loadRoom = SceneManager.LoadSceneAsync(roomName, LoadSceneMode.Additive);
 
@@ -128,7 +128,7 @@ public class RoomController : MonoBehaviour
 
         room.X = curLoadRoomData.X;
         room.Y = curLoadRoomData.Y;
-        room.name = dunLevelName + "-" + curLoadRoomData.name + "_" + room.X + "," + room.Y;
+        room.name = dungeonLevelName + "-" + curLoadRoomData.name + "_" + room.X + "," + room.Y;
 
         room.transform.parent = transform;
 
@@ -136,6 +136,7 @@ public class RoomController : MonoBehaviour
 
         if (loadedRooms.Count == 0)
         {
+            //Setyo the virtual cameras bounding shape info for the first room
             Cinemachine.CinemachineVirtualCamera[] cameras = FindObjectsOfType<Cinemachine.CinemachineVirtualCamera>();
             foreach (Cinemachine.CinemachineVirtualCamera camera in cameras)
             {

@@ -15,3 +15,10 @@ MonoBehaviour:
   numberOfCrawlers: 5
   iterationMin: 5
   iterationMax: 10
+  levelPrefix: Dungeon
+  roomChances:
+  - roomName: Empty
+    spawnChance: 75
+  - roomName: Spiked
+    spawnChance: 25
+  totalSpawnChance: 100

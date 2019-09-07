@@ -22,7 +22,7 @@ public class Room : MonoBehaviour
     private void Start()
     {
         //Room generation starting in a room that does not need it
-        if (RoomController.roomControlInstance == null)
+        if (RoomController.instance == null)
         {
             throw new System.Exception("Room generation started in location that does not have a RoomController");
         }
@@ -49,7 +49,7 @@ public class Room : MonoBehaviour
             }
         }
 
-        RoomController.roomControlInstance.RegisterRoom(this);
+        RoomController.instance.RegisterRoom(this);
     }
 
     private void Update()
@@ -91,7 +91,7 @@ public class Room : MonoBehaviour
                 roomX = X + 1;
                 break;
         }
-        return RoomController.roomControlInstance.DoesRoomExist(roomX, roomY);
+        return RoomController.instance.DoesRoomExist(roomX, roomY);
     }
 
     private void OnDrawGizmos()
