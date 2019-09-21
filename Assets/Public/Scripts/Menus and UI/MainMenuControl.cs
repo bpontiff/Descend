@@ -3,28 +3,28 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuControl : MonoBehaviour
 {
-    public void ButtonNewGame()
+    public void NewGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("SampleScene");
     }
 
-    public void ButtonContinue()
+    public void Continue()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("SampleScene");
         // TODO: Need to load from a save
     }
 
-    public void ButtonOptions()
+    public void Options()
     {
         // TODO: Add Options scene
     }
 
-    public void ButtonCredits()
+    public void Credits()
     {
         // TODO: Add Credits scene
     }
 
-    public void ButtonExit()
+    public void QuitGame()
     {
         Application.Quit();
     }
