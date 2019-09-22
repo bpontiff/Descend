@@ -127,6 +127,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1872050567}
     m_Modifications:
+    - target: {fileID: 1413715721764945611, guid: c40cb47935fd5b5448f8f2669f08f0d2,
+        type: 3}
+      propertyPath: m_Name
+      value: VerticalDoor (1)
+      objectReference: {fileID: 0}
     - target: {fileID: -491393801603080402, guid: c40cb47935fd5b5448f8f2669f08f0d2,
         type: 3}
       propertyPath: doorDirction
@@ -136,11 +141,6 @@ PrefabInstance:
         type: 3}
       propertyPath: doorDirection
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413715721764945611, guid: c40cb47935fd5b5448f8f2669f08f0d2,
-        type: 3}
-      propertyPath: m_Name
-      value: VerticalDoor (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1413715721764945609, guid: c40cb47935fd5b5448f8f2669f08f0d2,
         type: 3}
@@ -180,7 +180,7 @@ PrefabInstance:
     - target: {fileID: 1413715721764945609, guid: c40cb47935fd5b5448f8f2669f08f0d2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1413715721764945609, guid: c40cb47935fd5b5448f8f2669f08f0d2,
         type: 3}
@@ -8959,6 +8959,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1872050567}
     m_Modifications:
+    - target: {fileID: 3519135117038689278, guid: a3696fd2902a68043b7be977971fd21b,
+        type: 3}
+      propertyPath: m_Name
+      value: HorizontalDoor (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 656873636650744726, guid: a3696fd2902a68043b7be977971fd21b,
         type: 3}
       propertyPath: doorDirction
@@ -8968,11 +8973,6 @@ PrefabInstance:
         type: 3}
       propertyPath: doorDirection
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3519135117038689278, guid: a3696fd2902a68043b7be977971fd21b,
-        type: 3}
-      propertyPath: m_Name
-      value: HorizontalDoor (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3519135117038689279, guid: a3696fd2902a68043b7be977971fd21b,
         type: 3}
@@ -9012,7 +9012,7 @@ PrefabInstance:
     - target: {fileID: 3519135117038689279, guid: a3696fd2902a68043b7be977971fd21b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3519135117038689279, guid: a3696fd2902a68043b7be977971fd21b,
         type: 3}
@@ -9216,6 +9216,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1872050567}
     m_Modifications:
+    - target: {fileID: 1413715721764945611, guid: c40cb47935fd5b5448f8f2669f08f0d2,
+        type: 3}
+      propertyPath: m_Name
+      value: VerticalDoor
+      objectReference: {fileID: 0}
     - target: {fileID: -491393801603080402, guid: c40cb47935fd5b5448f8f2669f08f0d2,
         type: 3}
       propertyPath: doorDirction
@@ -9225,11 +9230,6 @@ PrefabInstance:
         type: 3}
       propertyPath: doorDirection
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413715721764945611, guid: c40cb47935fd5b5448f8f2669f08f0d2,
-        type: 3}
-      propertyPath: m_Name
-      value: VerticalDoor
       objectReference: {fileID: 0}
     - target: {fileID: 1413715721764945609, guid: c40cb47935fd5b5448f8f2669f08f0d2,
         type: 3}
@@ -9295,6 +9295,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1872050567}
     m_Modifications:
+    - target: {fileID: 3519135117038689278, guid: a3696fd2902a68043b7be977971fd21b,
+        type: 3}
+      propertyPath: m_Name
+      value: HorizontalDoor
+      objectReference: {fileID: 0}
     - target: {fileID: 656873636650744726, guid: a3696fd2902a68043b7be977971fd21b,
         type: 3}
       propertyPath: doorDirction
@@ -9304,11 +9309,6 @@ PrefabInstance:
         type: 3}
       propertyPath: doorDirection
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3519135117038689278, guid: a3696fd2902a68043b7be977971fd21b,
-        type: 3}
-      propertyPath: m_Name
-      value: HorizontalDoor
       objectReference: {fileID: 0}
     - target: {fileID: 3519135117038689279, guid: a3696fd2902a68043b7be977971fd21b,
         type: 3}

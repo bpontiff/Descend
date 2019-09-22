@@ -10,6 +10,7 @@ public class DungeonGenerator : MonoBehaviour
 
     private void Awake()
     {
+        #if UNITY_EDITOR
         //Check for any null variables that would cause issues. Kill the run if they exist
         if (dungeonGenerationData.levelPrefix == null)
         {
@@ -34,6 +35,7 @@ public class DungeonGenerator : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
             return;
         }
+        #endif
     }
 
     private void Start()

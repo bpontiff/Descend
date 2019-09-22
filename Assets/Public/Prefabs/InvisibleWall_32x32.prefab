@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5391397079777797582}
   - component: {fileID: 7925690220382086836}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: InvisibleWall_32x32
   m_TagString: InvisWall
   m_Icon: {fileID: 0}
