@@ -29,7 +29,7 @@ public class RoomController : MonoBehaviour
 
     //Singleton
     public static RoomController instance;
-
+    
     //The Dungeon Level/Floor name
     public string dungeonLevelName { get; set; }
 
@@ -125,6 +125,7 @@ public class RoomController : MonoBehaviour
             curLoadRoomData.X * room.Width,
             curLoadRoomData.Y * room.Height
         );
+
 
         room.X = curLoadRoomData.X;
         room.Y = curLoadRoomData.Y;
