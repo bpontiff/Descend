@@ -99,7 +99,6 @@ public class ActorMovementModel : MonoBehaviour
         }
     }
 
-
     private void UpdateMovement()
     {
         if (m_MovementDirection != Vector3.zero)
