@@ -69,7 +69,7 @@ public class DamageCore : MonoBehaviour
         {
             if (Source is Player && "Enemy".Equals(col.gameObject.tag))
             {
-                Enemy enemy = col.gameObject.GetComponent<Enemy>();
+                Actor enemy = col.gameObject.GetComponent<Actor>();
                 enemy.Damage(damage);
                 ApplyKnockback(col.gameObject);
             }

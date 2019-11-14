@@ -72,11 +72,10 @@ public class SymetricShootingHolsterCore : WeaponHolsterCore
         float myAngleInRads = (angle * Mathf.PI) / 180;
         Vector3 startPos = new Vector3(Mathf.Cos(myAngleInRads), Mathf.Sin(myAngleInRads), 0);
 
-        GameObject bulletObj = ObjectPooling.SharedInstance.GetPooledObject("ProjectileBase");
-        bulletObj.SetActive(true);
-        Debug.Log(bulletObj);
+        GameObject bulletObj = ObjectPooling.SharedInstance.SafeGetPooledObject("ProjectileBase");
         if (bulletObj != null)
         {
+            bulletObj.SetActive(true);
             Projectile bullet = bulletObj.GetComponent<Projectile>();
             bullet.Source = m_Actor;
             bullet.setMovementDirection(startPos);
