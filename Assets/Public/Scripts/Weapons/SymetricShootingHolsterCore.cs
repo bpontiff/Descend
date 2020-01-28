@@ -92,11 +92,13 @@ public class SymetricShootingHolsterCore : WeaponHolsterCore
 
     public override void UpdateDirection(ActorMovementModel.Directions prevDir, ActorMovementModel.Directions currectDirection)
     {
-        throw new System.NotImplementedException();
+        Debug.LogWarning(this.ToString() + " does not contain an UpdateDirection definition");
+        //throw new System.NotImplementedException();
     }
 
     public override void UpdateWeapon(Sprite sprite, float startAngle, int numberToSpawnn, float angleBetweenInstances, float scaleX, float scaleY, float swingAngle, float swingSpeed, int weaponDamage, float knockbackStrength, float distanceFromPlayer)
     {
-        throw new System.NotImplementedException();
+        Debug.LogWarning(this.ToString() + " does not contain an UpdateWeapon definition");
+        //throw new System.NotImplementedException();
     }
 }
