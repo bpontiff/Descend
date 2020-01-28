@@ -24,6 +24,18 @@ public class ObjectPooling : MonoBehaviour
             }
         }
     }
+
+    public GameObject SafeGetPooledObject(string tag)
+    {
+        GameObject gameObject = GetPooledObject(tag);
+
+        //If a null is gotten for the game object throw an error
+        if (gameObject == null)
+            throw new System.Exception("No game object found in pool for tag " + tag);
+
+        return gameObject;
+    }
+
     public GameObject GetPooledObject(string tag)
     {
         for (int i = 0; i < pooledObjects.Count; i++)

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class WeaponHolsterCore : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public abstract class WeaponHolsterCore : MonoBehaviour
 
     public abstract void PrimaryAction(Actor m_Actor);
 
-    public abstract void UpdateWeapon(Sprite sprite, float startAngle, float scaleX, float scaleY, float swingAngle, float swingSpeed, int weaponDamage, float knockbackStrength, float distanceFromPlayer);
     public abstract void UpdateDirection(ActorMovementModel.Directions prevDir, ActorMovementModel.Directions currectDirection);
+
+    public abstract void UpdateWeapon(Sprite sprite, float startAngle, int numberToSpawnn, float angleBetweenInstances, float scaleX, float scaleY, float swingAngle, float swingSpeed, int weaponDamage, float knockbackStrength, float distanceFromPlayer);
 }

@@ -66,21 +66,16 @@ public class SymetricShootingHolsterCore : WeaponHolsterCore
         timeTillNextShot = secDelayBetweenShots;
     }
 
-    public override void UpdateWeapon(Sprite sprite, float startAngle, float scaleX, float scaleY, float swingAngle, float swingSpeed, int weaponDamage, float knockbackStrength, float distanceFromPlayer)
-    {
-        throw new System.NotImplementedException();
-    }
 
     private void createProjectile(Actor m_Actor, float angle, float speed)
     {
         float myAngleInRads = (angle * Mathf.PI) / 180;
         Vector3 startPos = new Vector3(Mathf.Cos(myAngleInRads), Mathf.Sin(myAngleInRads), 0);
 
-        GameObject bulletObj = ObjectPooling.SharedInstance.GetPooledObject("ProjectileBase");
-        bulletObj.SetActive(true);
-        Debug.Log(bulletObj);
+        GameObject bulletObj = ObjectPooling.SharedInstance.SafeGetPooledObject("ProjectileBase");
         if (bulletObj != null)
         {
+            bulletObj.SetActive(true);
             Projectile bullet = bulletObj.GetComponent<Projectile>();
             bullet.Source = m_Actor;
             bullet.setMovementDirection(startPos);
@@ -96,6 +91,11 @@ public class SymetricShootingHolsterCore : WeaponHolsterCore
     }
 
     public override void UpdateDirection(ActorMovementModel.Directions prevDir, ActorMovementModel.Directions currectDirection)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void UpdateWeapon(Sprite sprite, float startAngle, int numberToSpawnn, float angleBetweenInstances, float scaleX, float scaleY, float swingAngle, float swingSpeed, int weaponDamage, float knockbackStrength, float distanceFromPlayer)
     {
         throw new System.NotImplementedException();
     }

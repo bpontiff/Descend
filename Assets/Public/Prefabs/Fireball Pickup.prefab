@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5853848748263766115}
   - component: {fileID: 5853848748263766108}
   m_Layer: 0
-  m_Name: Saw Pickup
+  m_Name: Fireball Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,8 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2425411195009957671, guid: 80006d20517e13b4c9275b7e58322632,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 69d86b417b1e35548aaff0aabd7884d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,17 +95,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: {fileID: -4643300988332534371, guid: ae8acb596cc8f3f4ba6795ccbf8130ed,
     type: 3}
-  sprite: {fileID: -2425411195009957671, guid: 80006d20517e13b4c9275b7e58322632, type: 3}
-  scaleX: 0.5
-  scaleY: 0.5
-  startAngle: 25
-  swingAngle: 75
-  swingSpeed: 150
-  weaponDamage: 1
+  sprite: {fileID: 21300000, guid: 69d86b417b1e35548aaff0aabd7884d4, type: 3}
+  scaleX: 1
+  scaleY: 1
+  startAngle: 0
+  swingAngle: 720
+  swingSpeed: 500
+  weaponDamage: 5
   knockbackStrength: 500
   distanceFromPlayer: 1
-  numberToSpawn: 1
-  angleBetweenInstances: 0
+  numberToSpawn: 3
+  angleBetweenInstances: 125
 --- !u!61 &5853848748263766108
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.04, y: 1.88}
+    oldSize: {x: 0.85, y: 0.45}
     newSize: {x: 1.04, y: 1.88}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

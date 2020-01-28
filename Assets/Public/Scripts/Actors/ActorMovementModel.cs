@@ -75,30 +75,37 @@ public class ActorMovementModel : MonoBehaviour
 
             if(m_FacingDirection.y == -1)
             {
-                m_Animations.Play("MoveDown");
+                if (m_Animations != null)              
+                    m_Animations.Play("MoveDown");
                 currectDirection = Directions.South;
             }
             else if (m_FacingDirection.y == 1)
             {
-                m_Animations.Play("MoveUp");
+                if (m_Animations != null)
+                    m_Animations.Play("MoveUp");
                 currectDirection = Directions.North;
             }
             else if (m_FacingDirection.x == -1)
             {
-                m_Animations.Play("MoveLeft");
+                if (m_Animations != null)
+                    m_Animations.Play("MoveLeft");
                 currectDirection = Directions.East;
             }
             else if (m_FacingDirection.x == 1)
             {
-                m_Animations.Play("MoveRight");
+                if (m_Animations != null)
+                    m_Animations.Play("MoveRight");
                 currectDirection = Directions.West;
             }
+            if(m_Animations == null)
+            {
+                Debug.Log(this.ToString() + " has a null m_Animations");
+            }
 
-            if(prevDir != currectDirection)
+            if (prevDir != currectDirection && this.GetComponent<ActorControlBase>().weaponHolsterPrefab != null)
                 this.GetComponent<ActorControlBase>().weaponHolsterPrefab.UpdateDirection(prevDir, currectDirection);
         }
     }
-
 
     private void UpdateMovement()
     {

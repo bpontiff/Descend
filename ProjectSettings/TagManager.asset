@@ -10,6 +10,7 @@ TagManager:
   - CameraConfiner
   - Trap
   - InvisWall
+  - DamageNumber
   layers:
   - Default
   - TransparentFX

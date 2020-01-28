@@ -12,6 +12,8 @@ public class SwungWeaponPickup : MonoBehaviour
     public int weaponDamage;
     public float knockbackStrength;
     public float distanceFromPlayer;
+    public int numberToSpawn = 1;
+    public float angleBetweenInstances;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -30,7 +32,7 @@ public class SwungWeaponPickup : MonoBehaviour
             Destroy(controller.holsterInstance.gameObject);
             controller.holsterInstance = Instantiate(weaponType);
             controller.holsterInstance.transform.parent = controller.transform;
-            controller.holsterInstance.UpdateWeapon(sprite, startAngle, scaleX, scaleY, swingAngle, swingSpeed, weaponDamage, knockbackStrength, distanceFromPlayer);
+            controller.holsterInstance.UpdateWeapon(sprite, startAngle, numberToSpawn, angleBetweenInstances, scaleX, scaleY, swingAngle, swingSpeed, weaponDamage, knockbackStrength, distanceFromPlayer);
             //Destroy(this.gameObject);
         }
 
