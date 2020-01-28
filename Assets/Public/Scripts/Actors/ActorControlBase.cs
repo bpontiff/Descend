@@ -23,10 +23,16 @@ public class ActorControlBase : MonoBehaviour
     void Awake()
     {
         m_Actor = GetComponent<Actor>();
-        holsterInstance = Instantiate(weaponHolsterPrefab);
-        holsterInstance.transform.parent = this.transform;
+        if(weaponHolsterPrefab != null) { 
+            holsterInstance = Instantiate(weaponHolsterPrefab);
+            holsterInstance.transform.parent = this.transform;
+        }
+        else
+        {
+            Debug.Log(this.ToString() +  " has a null weaponHolsterPrefab");
+        }
 
-        if(dialogueManager == null && gameObject.GetComponent<Player>() != null)
+        if (dialogueManager == null && gameObject.GetComponent<Player>() != null)
         {
             throw new System.Exception("Dialog Manager not configured for this player");
         }
