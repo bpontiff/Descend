@@ -55,6 +55,7 @@ public class ObjectPooling : MonoBehaviour
                 }
             }
         }
+        Debug.Log("Instance for tag not found: " + tag);
         return null;
         
     }

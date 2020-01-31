@@ -25,6 +25,7 @@ public class SwungWeaponPickup : MonoBehaviour
         ActorControlBase controller = col.GetComponent<ActorControlBase>();
         if (controller == null)
         {
+            Debug.LogWarning(col.ToString() + " does not have an actor controller base");
             return;
         }
         else
@@ -33,7 +34,7 @@ public class SwungWeaponPickup : MonoBehaviour
             controller.holsterInstance = Instantiate(weaponType);
             controller.holsterInstance.transform.parent = controller.transform;
             controller.holsterInstance.UpdateWeapon(sprite, startAngle, numberToSpawn, angleBetweenInstances, scaleX, scaleY, swingAngle, swingSpeed, weaponDamage, knockbackStrength, distanceFromPlayer);
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
 
     }

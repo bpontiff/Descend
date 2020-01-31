@@ -23,10 +23,16 @@ namespace Assets.Public.Scripts
             }
 
         }
+
         public override void Damage(int damageAmount)
         {
             health -= damageAmount;
-            // TODO: Check for death
+            //TODO Enemy Death
+                if (health <= 0)
+                {
+                    GameObject drop = ObjectPooling.SharedInstance.SafeGetPooledObject("ItemDrop");
+                    Destroy(this.gameObject);
+                } 
             GameObject gameObject = ObjectPooling.SharedInstance.SafeGetPooledObject("DamageNumber");
             if (gameObject != null) {
                 gameObject.SetActive(true);

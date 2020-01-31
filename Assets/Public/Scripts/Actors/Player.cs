@@ -24,5 +24,12 @@ namespace Assets.Public.Scripts
         {
             heartsHealthSystem.Heal(healAmount);
         }
+
+        //Item Pickup and Destroy
+    
+        public void OnTriggerEnter(Collider other)
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

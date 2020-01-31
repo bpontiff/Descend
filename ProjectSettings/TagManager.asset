@@ -11,6 +11,7 @@ TagManager:
   - Trap
   - InvisWall
   - DamageNumber
+  - ItemDrop
   layers:
   - Default
   - TransparentFX
