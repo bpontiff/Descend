@@ -23,7 +23,7 @@ public class ItemPickup : MonoBehaviour
         //    controller.holsterInstance = Instantiate(weaponType);
         //    controller.holsterInstance.transform.parent = controller.transform;
         //    controller.holsterInstance.UpdateWeapon(sprite, startAngle, numberToSpawn, angleBetweenInstances, scaleX, scaleY, swingAngle, swingSpeed, weaponDamage, knockbackStrength, distanceFromPlayer);
-            Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
         //}
 
     }

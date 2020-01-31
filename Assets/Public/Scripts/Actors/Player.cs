@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,8 +7,15 @@ namespace Assets.Public.Scripts
 {
     class Player : Actor
     {
+
         private HeartsHealthSystem heartsHealthSystem;
 
+        private void Awake()
+        {
+            this.inventoryArray = new List<InventoryItem>(1);
+            Debug.Log(inventoryArray.ToString());
+            Debug.Log("Awake ran");
+        }
 
         public void SetHeartsHealthSystem(HeartsHealthSystem heartsHealthSystem)
         {

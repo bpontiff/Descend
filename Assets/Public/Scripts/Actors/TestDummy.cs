@@ -28,11 +28,14 @@ namespace Assets.Public.Scripts
         {
             health -= damageAmount;
             //TODO Enemy Death
-                if (health <= 0)
-                {
-                    GameObject drop = ObjectPooling.SharedInstance.SafeGetPooledObject("ItemDrop");
-                    Destroy(this.gameObject);
-                } 
+            if (health <= 0)
+            {
+                GameObject drop = ObjectPooling.SharedInstance.SafeGetPooledObject("ItemDrop");
+                drop.transform.position = this.transform.position;
+                drop.SetActive(true);
+                Debug.Log("Got object " + drop.ToString());
+                Destroy(this.gameObject);
+            } 
             GameObject gameObject = ObjectPooling.SharedInstance.SafeGetPooledObject("DamageNumber");
             if (gameObject != null) {
                 gameObject.SetActive(true);
